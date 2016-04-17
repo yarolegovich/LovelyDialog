@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="ld_icon" type="id"/>
+    <item name="ld_title" type="id"/>
+    <item name="ld_message" type="id"/>
+    <item name="ld_color_area" type="id"/>
+</resources>

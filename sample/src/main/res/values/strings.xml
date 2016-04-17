@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Sample</string>
+
+    <string name="test_title">Rate the library!</string>
+    <string name="test_message">This library is a set of simple wrapper classes that are aimed to help you easily create fancy dialogs.</string>
+    <string name="btn_standard_dialog">Standard dialog</string>
+    <string name="btn_text_input_dialog">Text input dialog</string>
+    <string name="btn_single_choice_dialog">Single choice dialog</string>
+    <string name="btn_multi_choice_dialog">Multi choice dialog</string>
+    <string name="btn_info_dialog">Info dialog</string>
+    <string name="btn_progress_dialog">Cancelable progress dialog!</string>
+</resources>

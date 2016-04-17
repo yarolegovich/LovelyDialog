@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.yarolegovich.sample.MainActivity">
+
+    <Button
+        style="@style/DialogTriggerButton"
+        android:id="@+id/btn_standard_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_standard_dialog" />
+
+    <Button
+        style="@style/DialogTriggerButton"
+        android:id="@+id/btn_text_input_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_text_input_dialog"/>
+
+    <Button
+        style="@style/DialogTriggerButton"
+        android:id="@+id/btn_single_choice_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_single_choice_dialog" />
+
+    <Button
+        style="@style/DialogTriggerButton"
+        android:id="@+id/btn_multi_choice_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_multi_choice_dialog" />
+
+    <Button
+        style="@style/DialogTriggerButton"
+        android:id="@+id/btn_info_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_info_dialog" />
+
+    <Button
+        style="@style/DialogTriggerButton"
+        android:id="@+id/btn_prgress_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_progress_dialog" />
+</LinearLayout>
