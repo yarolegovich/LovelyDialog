@@ -8,13 +8,19 @@ compile 'com.yarolegovich:lovely-dialog:1.0.0'
 ```
 
 ## Wiki
+###General
+As advised in Effective Java
+>  Favor composition over inheritance.
+
+LovelyDialog doesn't subclass any Dialog related classes, it is just a lightweight extensible wrapper for Dialog and manipulations with custom view. If you would like to improve something - pull requests are appreciated.
+### Dialog types
 Each dialog has colored top, icon, title and message + its own features. There are 6 types of dialogs available:
 * [LovelyStandardDialog] (#lovelystandarddialog)
-* [LovelyInfoDialog] (https://github.com/yarolegovich/lovelydialog#LovelyInfoDialog)
-* [LovelyTextInputDialog] (https://github.com/yarolegovich/lovelydialog#LovelyTextInputDialog)
+* [LovelyInfoDialog] (#lovelyinfodialog)
+* [LovelyTextInputDialog] (lovelytextinputdialog)
 * [LovelyChoiceDialog] (#lovelychoicedialog)
-* [LovelyProgressDialog] (https://github.com/yarolegovich/lovelydialog#LovelyProgressDialog)
-* [LovelyCustomDialog] (https://github.com/yarolegovich/lovelydialog#LovelyCustomDialog)
+* [LovelyProgressDialog] (#lovelyprogressdialog)
+* [LovelyCustomDialog] (#lovelycustomdialog)
 
 #### LovelyStandardDialog
 You can set positive, negative and neutral button here. Listeners can be set individually for each button, one for all three or not set at all (onClick on any button dialog will be just dismissed).
@@ -51,7 +57,7 @@ new LovelyInfoDialog(this)
 #### LovelyChoiceDialog
 Here you can use either single choice or multi choice dialogs. In case of multi choice dialog - Confirm button will appear. You can pass items as array, List (.toString() will be used to display them as simple text items) or provide your custom adapter.
 
-##### [Single choice] (#lovely-standard-dialog)
+##### Single choice
 ```java
 ArrayAdapter<DonationOption> adapter = new DonationAdapter(this, loadDonationOptions());
 new LovelyChoiceDialog(this)
@@ -130,4 +136,25 @@ new LovelyCustomDialog(this)
       .setListener(R.id.ld_btn_yes, /* ... */)
       .setInstanceStateManager(/* ... */)
       .show();
+```
+### Configuration changes
+There is a class LovelySaveStateHandler that helps you to persist information about which dialog was shown (if any) between configuration changes. 
+Each dialog (except LovelyCustomDialog) knows how to save and restore its state. 
+Refer to [sample project] (https://github.com/yarolegovich/LovelyDialog/blob/master/sample/src/main/java/com/yarolegovich/sample/MainActivity.java) for examples of how to deal with configuration changes.
+
+###License
+```
+Copyright 2016 Yaroslav Shevchuk
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
