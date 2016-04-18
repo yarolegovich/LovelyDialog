@@ -9,10 +9,10 @@ compile 'com.yarolegovich:lovely-dialog:1.0.0'
 
 ## Wiki
 Each dialog has colored top, icon, title and message + its own features. There are 6 types of dialogs available:
-* [LovelyStandardDialog] (https://github.com/yarolegovich/lovelydialog#lovely-standard-dialog)
+* [LovelyStandardDialog] (#lovelystandarddialog)
 * [LovelyInfoDialog] (https://github.com/yarolegovich/lovelydialog#LovelyInfoDialog)
 * [LovelyTextInputDialog] (https://github.com/yarolegovich/lovelydialog#LovelyTextInputDialog)
-* [LovelyChoiceDialog] (https://github.com/yarolegovich/lovelydialog#LovelyChoiceDialog)
+* [LovelyChoiceDialog] (#lovelychoicedialog)
 * [LovelyProgressDialog] (https://github.com/yarolegovich/lovelydialog#LovelyProgressDialog)
 * [LovelyCustomDialog] (https://github.com/yarolegovich/lovelydialog#LovelyCustomDialog)
 
