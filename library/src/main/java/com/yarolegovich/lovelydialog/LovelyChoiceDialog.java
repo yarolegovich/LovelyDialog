@@ -39,12 +39,12 @@ public class LovelyChoiceDialog extends AbsLovelyDialog<LovelyChoiceDialog> {
         choicesList = findView(R.id.ld_choices);
     }
 
-    public LovelyChoiceDialog setItems(String[] items, OnItemSelectedListener<String> itemSelectedListener) {
+    public <T> LovelyChoiceDialog setItems(T[] items, OnItemSelectedListener<T> itemSelectedListener) {
         return setItems(Arrays.asList(items), itemSelectedListener);
     }
 
-    public LovelyChoiceDialog setItems(List<String> items, OnItemSelectedListener<String> itemSelectedListener) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
+    public <T> LovelyChoiceDialog setItems(List<T> items, OnItemSelectedListener<T> itemSelectedListener) {
+        ArrayAdapter<T> adapter = new ArrayAdapter<>(getContext(),
                 R.layout.item_simple_text, android.R.id.text1,
                 items);
         return setItems(adapter, itemSelectedListener);
@@ -56,20 +56,20 @@ public class LovelyChoiceDialog extends AbsLovelyDialog<LovelyChoiceDialog> {
         return this;
     }
 
-    public LovelyChoiceDialog setItemsMultiChoice(String[] items, OnItemsSelectedListener<String> itemsSelectedListener) {
+    public <T> LovelyChoiceDialog setItemsMultiChoice(T[] items, OnItemsSelectedListener<T> itemsSelectedListener) {
         return setItemsMultiChoice(items, null, itemsSelectedListener);
     }
 
-    public LovelyChoiceDialog setItemsMultiChoice(String[] items, boolean[] selectionState, OnItemsSelectedListener<String> itemsSelectedListener) {
+    public <T> LovelyChoiceDialog setItemsMultiChoice(T[] items, boolean[] selectionState, OnItemsSelectedListener<T> itemsSelectedListener) {
         return setItemsMultiChoice(Arrays.asList(items), selectionState, itemsSelectedListener);
     }
 
-    public LovelyChoiceDialog setItemsMultiChoice(List<String> items, OnItemsSelectedListener<String> itemsSelectedListener) {
+    public <T> LovelyChoiceDialog setItemsMultiChoice(List<T> items, OnItemsSelectedListener<T> itemsSelectedListener) {
         return setItemsMultiChoice(items, null, itemsSelectedListener);
     }
 
-    public LovelyChoiceDialog setItemsMultiChoice(List<String> items, boolean[] selectionState, OnItemsSelectedListener<String> itemsSelectedListener) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
+    public <T> LovelyChoiceDialog setItemsMultiChoice(List<T> items, boolean[] selectionState, OnItemsSelectedListener<T> itemsSelectedListener) {
+        ArrayAdapter<T> adapter = new ArrayAdapter<>(getContext(),
                 R.layout.item_simple_text_multichoice, android.R.id.text1,
                 items);
         return setItemsMultiChoice(adapter, selectionState, itemsSelectedListener);

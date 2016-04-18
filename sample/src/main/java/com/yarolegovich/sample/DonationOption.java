@@ -12,4 +12,12 @@ public class DonationOption {
         this.amount = amount;
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "DonationOption{" +
+                "description='" + description + '\'' +
+                ", amount='" + amount + '\'' +
+                '}';
+    }
 }
