@@ -145,7 +145,17 @@ new LovelyCustomDialog(this)
 There is a class LovelySaveStateHandler that helps you to persist information about which dialog was shown (if any) between configuration changes. 
 Each dialog (except LovelyCustomDialog) knows how to save and restore its state. 
 Refer to [sample project] (https://github.com/yarolegovich/LovelyDialog/blob/master/sample/src/main/java/com/yarolegovich/sample/MainActivity.java) for examples of how to deal with configuration changes.
-
+### Tinting controls
+If you want CheckBoxes, EditTexts etc. to be of different color - what you need is to define theme in xml
+```xml
+<style name="TintTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+      <item name="colorAccent">@color/colorToTintWith</item>
+</style>
+```
+and pass it as a second argument to dialog's constructor
+```java
+new LovelyTextInputDialog(this, R.style.TintTheme)
+```
 ###License
 ```
 Copyright 2016 Yaroslav Shevchuk
