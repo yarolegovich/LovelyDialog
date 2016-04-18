@@ -9,12 +9,12 @@ compile 'com.yarolegovich:lovely-dialog:1.0.0'
 
 ## Wiki
 Each dialog has colored top, icon, title and message + its own features. There are 6 types of dialogs available:
-* [LovelyStandardDialog] (https://github.com/yarolegovich/lovely-dialog#LovelyStandardDialog)
-* [LovelyInfoDialog] (https://github.com/yarolegovich/lovely-dialog#LovelyInfoDialog)
-* [LovelyTextInputDialog] (https://github.com/yarolegovich/lovely-dialog#LovelyTextInputDialog)
-* [LovelyChoiceDialog] (https://github.com/yarolegovich/lovely-dialog#LovelyChoiceDialog)
-* [LovelyProgressDialog] (https://github.com/yarolegovich/lovely-dialog#LovelyProgressDialog)
-* [LovelyCustomDialog] (https://github.com/yarolegovich/lovely-dialog#LovelyCustomDialog)
+* [LovelyStandardDialog] (https://github.com/yarolegovich/lovelydialog#LovelyStandardDialog)
+* [LovelyInfoDialog] (https://github.com/yarolegovich/lovelydialog#LovelyInfoDialog)
+* [LovelyTextInputDialog] (https://github.com/yarolegovich/lovelydialog#LovelyTextInputDialog)
+* [LovelyChoiceDialog] (https://github.com/yarolegovich/lovelydialog#LovelyChoiceDialog)
+* [LovelyProgressDialog] (https://github.com/yarolegovich/lovelydialog#LovelyProgressDialog)
+* [LovelyCustomDialog] (https://github.com/yarolegovich/lovelydialog#LovelyCustomDialog)
 
 #### LovelyStandardDialog
 You can set positive, negative and neutral button here. Listeners can be set individually for each button, one for all three or not set at all (onClick on any button dialog will be just dismissed).
