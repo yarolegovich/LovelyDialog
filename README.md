@@ -1,6 +1,8 @@
 # LovelyDialog
 This library is a set of simple wrapper classes that are aimed to help you easily create fancy material dialogs.
 
+![Screenshots](https://raw.githubusercontent.com/yarolegovich/lovelydialog/master/art/lovelydialogs_framed.png)
+
 ## Gradle 
 Add this into your dependencies block.
 ```
@@ -13,6 +15,8 @@ As advised in Effective Java
 >  Favor composition over inheritance.
 
 LovelyDialog doesn't subclass any Dialog related classes, it is just a lightweight extensible wrapper for Dialog and manipulations with custom view. If you would like to improve something - pull requests are appreciated.
+
+Sample project that shows how to work with different dialogs and handle screen rotation is available under the [sample module] (https://github.com/yarolegovich/LovelyDialog/tree/master/sample).
 ### Dialog types
 Each dialog has colored top, icon, title and message + its own features. There are 6 types of dialogs available:
 * [LovelyStandardDialog] (#lovelystandarddialog)
