@@ -9,7 +9,7 @@ compile 'com.yarolegovich:lovely-dialog:1.0.0'
 
 ## Wiki
 Each dialog has colored top, icon, title and message + its own features. There are 6 types of dialogs available:
-* [LovelyStandardDialog] (https://github.com/yarolegovich/lovelydialog#LovelyStandardDialog)
+* [LovelyStandardDialog] (https://github.com/yarolegovich/lovelydialog#lovely-standard-dialog)
 * [LovelyInfoDialog] (https://github.com/yarolegovich/lovelydialog#LovelyInfoDialog)
 * [LovelyTextInputDialog] (https://github.com/yarolegovich/lovelydialog#LovelyTextInputDialog)
 * [LovelyChoiceDialog] (https://github.com/yarolegovich/lovelydialog#LovelyChoiceDialog)
@@ -51,7 +51,7 @@ new LovelyInfoDialog(this)
 #### LovelyChoiceDialog
 Here you can use either single choice or multi choice dialogs. In case of multi choice dialog - Confirm button will appear. You can pass items as array, List (.toString() will be used to display them as simple text items) or provide your custom adapter.
 
-##### Single choice
+##### [Single choice] (#lovely-standard-dialog)
 ```java
 ArrayAdapter<DonationOption> adapter = new DonationAdapter(this, loadDonationOptions());
 new LovelyChoiceDialog(this)
