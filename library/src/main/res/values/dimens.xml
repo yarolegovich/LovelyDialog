@@ -1,4 +1,4 @@
 <resources>
-    <dimen name="color_area_height">82dp</dimen>
-    <dimen name="side_margin">22dp</dimen>
+    <dimen name="ld_side_margin">22dp</dimen>
+    <dimen name="ld_side_cb_margin">16dp</dimen>
 </resources>

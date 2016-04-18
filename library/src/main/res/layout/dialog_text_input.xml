@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/view_color_area"/>
+    <include layout="@layout/view_color_area" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,34 +20,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="12dp" />
 
-            <include layout="@layout/view_title_and_message"/>
+            <include layout="@layout/view_title_and_message" />
 
             <EditText
                 android:id="@+id/ld_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
-                android:textColor="@color/secondaryText"
+                android:textColor="@color/ld_secondaryText"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/ld_error_message"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ld_side_margin"
+                android:layout_marginRight="@dimen/ld_side_margin"
+                android:textColor="@color/ld_textInputError"
+                android:visibility="gone" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="8dp" />
 
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/od_btn_confirm"
-        style="?android:borderlessButtonStyle"
+    <TextView
+        android:id="@+id/ld_btn_confirm"
+        style="@style/DialogButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_gravity="right"
-        android:textColor="@color/primaryText"  />
+        android:text="@android:string/ok"/>
 
 </LinearLayout>

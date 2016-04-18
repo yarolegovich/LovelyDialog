@@ -1,6 +1,7 @@
 package com.yarolegovich.lovelydialog;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +13,14 @@ import android.view.ViewGroup;
 public class LovelyCustomDialog extends AbsLovelyDialog<LovelyCustomDialog> {
 
     private View addedView;
+    private InstanceStateManager instanceStateManager;
 
     public LovelyCustomDialog(Context context) {
         super(context);
+    }
+
+    public LovelyCustomDialog(Context context, int theme) {
+        super(context, theme);
     }
 
     public LovelyCustomDialog setView(@LayoutRes int layout) {
@@ -31,24 +37,44 @@ public class LovelyCustomDialog extends AbsLovelyDialog<LovelyCustomDialog> {
         return this;
     }
 
-    public LovelyCustomDialog setListener(int viewId, View.OnClickListener listener) {
-        return setListener(viewId, false, listener);
-    }
-
     public LovelyCustomDialog configureView(ViewConfigurator configurator) {
         if (addedView == null) {
-            throw new IllegalStateException("You must call method setView before calling configureView");
+            throw new IllegalStateException(string(R.string.ex_msg_dialog_view_not_set));
         }
         configurator.configureView(addedView);
         return this;
     }
 
+    public LovelyCustomDialog setListener(int viewId, View.OnClickListener listener) {
+        return setListener(viewId, false, listener);
+    }
+
     public LovelyCustomDialog setListener(int viewId, boolean dismissOnClick, View.OnClickListener listener) {
+        if (addedView == null) {
+            throw new IllegalStateException(string(R.string.ex_msg_dialog_view_not_set));
+        }
         View.OnClickListener clickListener = dismissOnClick ?
                 new CloseOnClickDecorator(listener) :
                 listener;
         findView(viewId).setOnClickListener(clickListener);
         return this;
+    }
+
+    public LovelyCustomDialog setInstanceStateManager(InstanceStateManager instanceStateManager) {
+        this.instanceStateManager = instanceStateManager;
+        return this;
+    }
+
+    @Override
+    void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        instanceStateManager.saveInstanceState(outState);
+    }
+
+    @Override
+    void restoreState(Bundle savedState) {
+        super.restoreState(savedState);
+        instanceStateManager.restoreInstanceState(savedState);
     }
 
     @Override
@@ -58,5 +84,10 @@ public class LovelyCustomDialog extends AbsLovelyDialog<LovelyCustomDialog> {
 
     public interface ViewConfigurator {
         void configureView(View v);
+    }
+
+    public interface InstanceStateManager {
+        void saveInstanceState(Bundle outState);
+        void restoreInstanceState(Bundle savedState);
     }
 }

@@ -6,9 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.5.0'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.novoda:bintray-release:0.3.4'
     }
 }
 
@@ -20,4 +18,13 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    userOrg = 'yarolegovich'
+    groupId = 'com.yarolegovich'
+    uploadName = 'LovelyDialog'
+    description = 'This library is a set of simple wrapper classes that are aimed to help you easily create fancy dialogs.'
+    publishVersion = '1.0.0'
+    licences = ['Apache-2.0']
 }

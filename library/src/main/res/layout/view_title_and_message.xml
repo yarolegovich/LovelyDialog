@@ -3,12 +3,12 @@
 
     <TextView
         android:id="@id/ld_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
-        android:layout_marginLeft="@dimen/side_margin"
-        android:layout_marginRight="@dimen/side_margin"
-        android:textColor="@color/primaryText"
+        android:layout_marginLeft="@dimen/ld_side_margin"
+        android:layout_marginRight="@dimen/ld_side_margin"
+        android:textColor="@color/ld_primaryText"
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="gone" />
@@ -18,9 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="@dimen/side_margin"
-        android:layout_marginRight="@dimen/side_margin"
-        android:textColor="@color/secondaryText"
+        android:layout_marginLeft="@dimen/ld_side_margin"
+        android:layout_marginRight="@dimen/ld_side_margin"
+        android:textColor="@color/ld_secondaryText"
         android:textSize="16sp"
         android:visibility="gone" />
 

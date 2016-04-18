@@ -11,7 +11,6 @@ import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,69 +20,100 @@ import android.widget.TextView;
 @SuppressWarnings("unchecked")
 public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
 
+    private static final String KEY_SAVED_STATE_TOKEN = "key_saved_state_token";
+
     private Dialog dialog;
     private View dialogView;
 
+    private ImageView iconView;
+    private TextView titleView;
+    private TextView messageView;
+
     public AbsLovelyDialog(Context context) {
-        dialogView = LayoutInflater.from(context).inflate(getLayout(), null);
-        dialog = new AlertDialog.Builder(context)
-                .setView(dialogView)
-                .create();
+        init(new AlertDialog.Builder(context));
+    }
+
+    public AbsLovelyDialog(Context context, int theme) {
+        init(new AlertDialog.Builder(context, theme));
+    }
+
+    private void init(AlertDialog.Builder dialogBuilder) {
+        dialogView = LayoutInflater.from(dialogBuilder.getContext()).inflate(getLayout(), null);
+        dialog = dialogBuilder.setView(dialogView).create();
+
+        iconView = findView(R.id.ld_icon);
+        titleView = findView(R.id.ld_title);
+        messageView = findView(R.id.ld_message);
     }
 
     @LayoutRes
     protected abstract int getLayout();
 
     public T setMessage(@StringRes int message) {
-        return setMessage(getString(message));
+        return setMessage(string(message));
     }
 
     public T setMessage(String message) {
-        TextView messageView = findView(R.id.ld_message);
         messageView.setVisibility(View.VISIBLE);
         messageView.setText(message);
         return (T) this;
     }
 
     public T setTitle(@StringRes int title) {
-        return setTitle(getString(title));
+        return setTitle(string(title));
     }
 
     public T setTitle(String title) {
-        TextView titleView = findView(R.id.ld_title);
         titleView.setVisibility(View.VISIBLE);
         titleView.setText(title);
         return (T) this;
     }
 
-    public T setIcon(Drawable drawable) {
-        findIconImageView().setImageDrawable(drawable);
+    public T setIcon(Bitmap bitmap) {
+        iconView.setVisibility(View.VISIBLE);
+        iconView.setImageBitmap(bitmap);
         return (T) this;
     }
 
-    public T setIcon(Bitmap bitmap) {
-        findIconImageView().setImageBitmap(bitmap);
+    public T setIcon(Drawable drawable) {
+        iconView.setVisibility(View.VISIBLE);
+        iconView.setImageDrawable(drawable);
         return (T) this;
     }
 
     public T setIcon(@DrawableRes int iconRes) {
-        findIconImageView().setImageResource(iconRes);
+        iconView.setVisibility(View.VISIBLE);
+        iconView.setImageResource(iconRes);
         return (T) this;
     }
 
-    private ImageView findIconImageView() {
-        ImageView icon = findView(R.id.ld_icon);
-        icon.setVisibility(View.VISIBLE);
-        return icon;
-    }
-
-    public T setIconTintColor(int color) {
-        findIconImageView().setColorFilter(color);
+    public T setIconTintColor(int iconTintColor) {
+        iconView.setColorFilter(iconTintColor);
         return (T) this;
     }
 
-    public T setTopColor(int color) {
-        findView(R.id.ld_color_area).setBackgroundColor(color);
+    public T setTitleGravity(int gravity) {
+        titleView.setGravity(gravity);
+        return (T) this;
+    }
+
+    public T setMessageGravity(int gravity) {
+        messageView.setGravity(gravity);
+        return (T) this;
+    }
+
+    public T setTopColor(int topColor) {
+        findView(R.id.ld_color_area).setBackgroundColor(topColor);
+        return (T) this;
+    }
+
+    /*
+     * You should call method saveInstanceState on handler object and then use saved info to restore
+     * your dialog in onRestoreInstanceState. Static methods wasDialogOnScreen and getDialogId will
+     * help you in this.
+     */
+    public T setInstanceStateHandler(int id, LovelySaveStateHandler handler) {
+        handler.handleDialogStateSave(id, this);
         return (T) this;
     }
 
@@ -92,8 +122,16 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return (T) this;
     }
 
-    public Dialog create() {
-        return dialog;
+    public T setSavedInstanceState(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            boolean hasSavedStateHere =
+                    savedInstanceState.keySet().contains(KEY_SAVED_STATE_TOKEN) &&
+                    savedInstanceState.getSerializable(KEY_SAVED_STATE_TOKEN) == getClass();
+            if (hasSavedStateHere) {
+                restoreState(savedInstanceState);
+            }
+        }
+        return (T) this;
     }
 
     public Dialog show() {
@@ -101,15 +139,25 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return dialog;
     }
 
-    public void onSaveInstanceState(Bundle outState) {
-
+    public Dialog create() {
+        return dialog;
     }
 
     public void dismiss() {
         dialog.dismiss();
     }
 
-    protected String getString(@StringRes int res) {
+    void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable(KEY_SAVED_STATE_TOKEN, getClass());
+    }
+
+    void restoreState(Bundle savedState) { }
+
+    boolean isShowing() {
+        return dialog != null && dialog.isShowing();
+    }
+
+    protected String string(@StringRes int res) {
         return dialogView.getContext().getString(res);
     }
 
@@ -117,10 +165,8 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return dialogView.getContext();
     }
 
-    protected <ViewClass extends View>ViewClass findView(int id) {
-        ViewClass view = (ViewClass) dialogView.findViewById(id);
-        view.setVisibility(View.VISIBLE);
-        return view;
+    protected <ViewClass extends View> ViewClass findView(int id) {
+        return (ViewClass) dialogView.findViewById(id);
     }
 
     protected class CloseOnClickDecorator implements View.OnClickListener {

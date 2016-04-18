@@ -1,51 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.yarolegovich.sample.MainActivity">
 
-    <Button
-        style="@style/DialogTriggerButton"
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_standard_dialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_standard_dialog" />
-
-    <Button
         style="@style/DialogTriggerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_standard_dialog"
+        app:backgroundTint="@color/indigo" />
+
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_text_input_dialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_text_input_dialog"/>
-
-    <Button
         style="@style/DialogTriggerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_text_input_dialog"
+        app:backgroundTint="@color/darkDeepOrange" />
+
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_single_choice_dialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_single_choice_dialog" />
-
-    <Button
         style="@style/DialogTriggerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_single_choice_dialog"
+        app:backgroundTint="@color/darkGreen" />
+
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_multi_choice_dialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_multi_choice_dialog" />
-
-    <Button
         style="@style/DialogTriggerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_multi_choice_dialog"
+        app:backgroundTint="@color/darkRed" />
+
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_info_dialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_info_dialog" />
-
-    <Button
         style="@style/DialogTriggerButton"
-        android:id="@+id/btn_prgress_dialog"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_progress_dialog" />
+        android:text="@string/btn_info_dialog"
+        app:backgroundTint="@color/darkBlueGrey" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_progress_dialog"
+        style="@style/DialogTriggerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_progress_dialog"
+        app:backgroundTint="@color/teal" />
+
 </LinearLayout>

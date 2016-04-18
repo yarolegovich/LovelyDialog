@@ -1,11 +1,11 @@
 package com.yarolegovich.lovelydialog;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,36 +14,62 @@ import android.widget.TextView;
  */
 public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog> {
 
+    private static final String KEY_HAS_ERROR = "key_has_error";
+    private static final String KEY_TYPED_TEXT = "key_typed_text";
+
     private EditText inputField;
     private TextView errorMessage;
+    private TextView confirmButton;
 
     private TextFilter filter;
 
     public LovelyTextInputDialog(Context context) {
         super(context);
+    }
+
+    public LovelyTextInputDialog(Context context, int theme) {
+        super(context, theme);
+    }
+
+    {
+        confirmButton = findView(R.id.ld_btn_confirm);
         inputField = findView(R.id.ld_text_input);
         errorMessage = findView(R.id.ld_error_message);
         inputField.addTextChangedListener(new HideErrorOnTextChanged());
     }
 
-    public LovelyTextInputDialog setConfirmButton(@StringRes int text, OnTextInputConfirmedListener listener) {
-        return setConfirmButton(getString(text), listener);
+    public LovelyTextInputDialog setConfirmButton(@StringRes int text, OnTextInputConfirmListener listener) {
+        return setConfirmButton(string(text), listener);
     }
 
-    public LovelyTextInputDialog setConfirmButton(String text, OnTextInputConfirmedListener listener) {
-        Button confirmButton = findView(R.id.od_btn_confirm);
+    public LovelyTextInputDialog setConfirmButton(String text, OnTextInputConfirmListener listener) {
         confirmButton.setText(text);
         confirmButton.setOnClickListener(new TextInputListener(listener));
         return this;
     }
 
-    public LovelyTextInputDialog setInputFilter(TextFilter filter, @StringRes int errorMessage) {
-        return setInputFilter(filter, getString(errorMessage));
+    public LovelyTextInputDialog setConfirmButtonColor(int color) {
+        confirmButton.setTextColor(color);
+        return this;
     }
 
-    public LovelyTextInputDialog setInputFilter(TextFilter filter, String errorMessage) {
+    public LovelyTextInputDialog setInputFilter(@StringRes int errorMessage, TextFilter filter) {
+        return setInputFilter(string(errorMessage), filter);
+    }
+
+    public LovelyTextInputDialog setInputFilter(String errorMessage, TextFilter filter) {
         this.filter = filter;
         this.errorMessage.setText(errorMessage);
+        return this;
+    }
+
+    public LovelyTextInputDialog setErrorMessageColor(int color) {
+        errorMessage.setTextColor(color);
+        return this;
+    }
+
+    public LovelyTextInputDialog setInputType(int inputType) {
+        inputField.setInputType(inputType);
         return this;
     }
 
@@ -61,15 +87,31 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
     }
 
     @Override
+    void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(KEY_HAS_ERROR, errorMessage.getVisibility() == View.VISIBLE);
+        outState.putString(KEY_TYPED_TEXT, inputField.getText().toString());
+    }
+
+    @Override
+    void restoreState(Bundle savedState) {
+        super.restoreState(savedState);
+        if (savedState.getBoolean(KEY_HAS_ERROR, false)) {
+            setError();
+        }
+        inputField.setText(savedState.getString(KEY_TYPED_TEXT));
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.dialog_text_input;
     }
 
     private class TextInputListener implements View.OnClickListener {
 
-        private OnTextInputConfirmedListener wrapped;
+        private OnTextInputConfirmListener wrapped;
 
-        private TextInputListener(OnTextInputConfirmedListener wrapped) {
+        private TextInputListener(OnTextInputConfirmListener wrapped) {
             this.wrapped = wrapped;
         }
 
@@ -111,7 +153,7 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
         }
     }
 
-    public interface OnTextInputConfirmedListener {
+    public interface OnTextInputConfirmListener {
         void onTextInputConfirmed(String text);
     }
 

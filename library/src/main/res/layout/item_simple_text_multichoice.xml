@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.AppCompatCheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:backgroundTint="#EBEE"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+    android:gravity="center_vertical"
+    android:paddingLeft="@dimen/ld_side_margin"
+    android:paddingRight="@dimen/ld_side_cb_margin"
+    android:textAppearance="?android:attr/textAppearanceListItemSmall" />
