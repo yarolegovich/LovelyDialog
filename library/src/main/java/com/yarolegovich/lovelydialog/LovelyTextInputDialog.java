@@ -78,6 +78,24 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
         return this;
     }
 
+    public LovelyTextInputDialog setInitialInput(@StringRes int text) {
+        return setInitialInput(string(text));
+    }
+
+    public LovelyTextInputDialog setInitialInput(String text) {
+        inputField.setText(text);
+        return this;
+    }
+
+    public LovelyTextInputDialog setHint(@StringRes int hint) {
+        return setHint(string(hint));
+    }
+
+    public LovelyTextInputDialog setHint(String text) {
+        inputField.setHint(text);
+        return this;
+    }
+
     private void setError() {
         errorMessage.setVisibility(View.VISIBLE);
     }

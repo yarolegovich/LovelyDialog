@@ -20,11 +20,12 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+
 ext {
     userOrg = 'yarolegovich'
     groupId = 'com.yarolegovich'
     uploadName = 'LovelyDialog'
     description = 'This library is a set of simple wrapper classes that are aimed to help you easily create fancy dialogs.'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     licences = ['Apache-2.0']
 }
