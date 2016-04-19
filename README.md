@@ -6,7 +6,7 @@ This library is a set of simple wrapper classes that are aimed to help you easil
 ## Gradle 
 Add this into your dependencies block.
 ```
-compile 'com.yarolegovich:lovely-dialog:1.0.0'
+compile 'com.yarolegovich:lovely-dialog:1.0.1'
 ```
 
 ## Wiki
