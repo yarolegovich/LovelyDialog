@@ -1,4 +1,6 @@
 # LovelyDialog
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-LovelyDialog-green.svg?style=true)](https://android-arsenal.com/details/1/3452)
+
 This library is a set of simple wrapper classes that are aimed to help you easily create fancy material dialogs.
 
 ![Screenshots](https://raw.githubusercontent.com/yarolegovich/lovelydialog/master/art/lovelydialogs_framed.png)
