@@ -1,10 +1,12 @@
 # LovelyDialog
 This library is a set of simple wrapper classes that are aimed to help you easily create fancy material dialogs.
 
+![Screenshots](https://raw.githubusercontent.com/yarolegovich/lovelydialog/master/art/lovelydialogs_framed.png)
+
 ## Gradle 
 Add this into your dependencies block.
 ```
-compile 'com.yarolegovich:lovely-dialog:1.0.0'
+compile 'com.yarolegovich:lovely-dialog:1.0.1'
 ```
 
 ## Wiki
@@ -13,6 +15,8 @@ As advised in Effective Java
 >  Favor composition over inheritance.
 
 LovelyDialog doesn't subclass any Dialog related classes, it is just a lightweight extensible wrapper for Dialog and manipulations with custom view. If you would like to improve something - pull requests are appreciated.
+
+Sample project that shows how to work with different dialogs and handle screen rotation is available under the [sample module] (https://github.com/yarolegovich/LovelyDialog/tree/master/sample).
 ### Dialog types
 Each dialog has colored top, icon, title and message + its own features. There are 6 types of dialogs available:
 * [LovelyStandardDialog] (#lovelystandarddialog)
@@ -141,7 +145,17 @@ new LovelyCustomDialog(this)
 There is a class LovelySaveStateHandler that helps you to persist information about which dialog was shown (if any) between configuration changes. 
 Each dialog (except LovelyCustomDialog) knows how to save and restore its state. 
 Refer to [sample project] (https://github.com/yarolegovich/LovelyDialog/blob/master/sample/src/main/java/com/yarolegovich/sample/MainActivity.java) for examples of how to deal with configuration changes.
-
+### Tinting controls
+If you want CheckBoxes, EditTexts etc. to be of different color - what you need is to define theme in xml
+```xml
+<style name="TintTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+      <item name="colorAccent">@color/colorToTintWith</item>
+</style>
+```
+and pass it as a second argument to dialog's constructor
+```java
+new LovelyTextInputDialog(this, R.style.TintTheme)
+```
 ###License
 ```
 Copyright 2016 Yaroslav Shevchuk
