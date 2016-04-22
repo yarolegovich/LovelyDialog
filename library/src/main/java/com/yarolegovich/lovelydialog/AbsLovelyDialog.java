@@ -26,6 +26,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     private View dialogView;
 
     private ImageView iconView;
+    private TextView topTitleView;
     private TextView titleView;
     private TextView messageView;
 
@@ -44,6 +45,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         iconView = findView(R.id.ld_icon);
         titleView = findView(R.id.ld_title);
         messageView = findView(R.id.ld_message);
+        topTitleView = findView(R.id.ld_top_title);
     }
 
     @LayoutRes
@@ -63,9 +65,24 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return setTitle(string(title));
     }
 
+    public T setTopTitle(@StringRes int title) {
+        return setTopTitle(string(title));
+    }
+
     public T setTitle(CharSequence title) {
         titleView.setVisibility(View.VISIBLE);
         titleView.setText(title);
+        return (T) this;
+    }
+
+    public T setTopTitle(CharSequence title) {
+        topTitleView.setVisibility(View.VISIBLE);
+        topTitleView.setText(title);
+        return (T) this;
+    }
+
+    public T setTopTitleColor(int color) {
+        topTitleView.setTextColor(color);
         return (T) this;
     }
 
@@ -126,7 +143,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         if (savedInstanceState != null) {
             boolean hasSavedStateHere =
                     savedInstanceState.keySet().contains(KEY_SAVED_STATE_TOKEN) &&
-                    savedInstanceState.getSerializable(KEY_SAVED_STATE_TOKEN) == getClass();
+                            savedInstanceState.getSerializable(KEY_SAVED_STATE_TOKEN) == getClass();
             if (hasSavedStateHere) {
                 restoreState(savedInstanceState);
             }
@@ -151,7 +168,8 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         outState.putSerializable(KEY_SAVED_STATE_TOKEN, getClass());
     }
 
-    void restoreState(Bundle savedState) { }
+    void restoreState(Bundle savedState) {
+    }
 
     boolean isShowing() {
         return dialog != null && dialog.isShowing();
