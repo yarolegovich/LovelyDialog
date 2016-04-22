@@ -53,7 +53,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return setMessage(string(message));
     }
 
-    public T setMessage(String message) {
+    public T setMessage(CharSequence message) {
         messageView.setVisibility(View.VISIBLE);
         messageView.setText(message);
         return (T) this;
@@ -63,7 +63,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return setTitle(string(title));
     }
 
-    public T setTitle(String title) {
+    public T setTitle(CharSequence title) {
         titleView.setVisibility(View.VISIBLE);
         titleView.setText(title);
         return (T) this;
