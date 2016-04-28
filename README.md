@@ -8,7 +8,7 @@ This library is a set of simple wrapper classes that are aimed to help you easil
 ## Gradle 
 Add this into your dependencies block.
 ```
-compile 'com.yarolegovich:lovely-dialog:1.0.2'
+compile 'com.yarolegovich:lovely-dialog:1.0.3'
 ```
 
 ## Wiki
@@ -33,8 +33,8 @@ You can set positive, negative and neutral button here. Listeners can be set ind
 
 ````java
 new LovelyStandardDialog(this)
-      .setTopColor(color(R.color.indigo))
-      .setButtonsColor(color(R.color.darkDeepOrange))
+      .setTopColorRes(R.color.indigo)
+      .setButtonsColorRes(R.color.darkDeepOrange)
       .setIcon(R.drawable.ic_star_border_white_36dp)
       .setTitle(R.string.rate_title) 
       .setMessage(R.string.rate_message)
@@ -52,7 +52,7 @@ new LovelyStandardDialog(this)
 Dialog for displaying information to the user, content is scrollable. There is an option to show Don't show again checkbox. If checked - dialog won't be called next time. This can be useful when showing some tutorials, for example. 
 ```java
 new LovelyInfoDialog(this)
-      .setTopColor(color(R.color.darkBlueGrey))
+      .setTopColorRes(R.color.darkBlueGrey)
       .setIcon(R.drawable.ic_info_outline_white_36dp)
       //This will add Don't show again checkbox to the dialog. You can pass any ID as argument
       .setNotShowAgainOptionEnabled(0)
@@ -67,7 +67,7 @@ Here you can use either single choice or multi choice dialogs. In case of multi 
 ```java
 ArrayAdapter<DonationOption> adapter = new DonationAdapter(this, loadDonationOptions());
 new LovelyChoiceDialog(this)
-      .setTopColor(color(R.color.darkGreen))
+      .setTopColorRes(R.color.darkGreen)
       .setTitle(R.string.donate_title)
       .setIcon(R.drawable.ic_local_atm_white_36dp)
       .setMessage(R.string.donate_message)
@@ -83,7 +83,7 @@ new LovelyChoiceDialog(this)
 ```java
 String[] items = getResources().getStringArray(R.array.food);
 new LovelyChoiceDialog(this, R.style.CheckBoxTintTheme)
-      .setTopColor(color(R.color.darkRed))
+      .setTopColorRes(R.color.darkRed)
       .setTitle(R.string.order_food_title)
       .setIcon(R.drawable.ic_food_white_36dp)
       .setItemsMultiChoice(items, new LovelyChoiceDialog.OnItemsSelectedListener<String>() {
@@ -102,7 +102,7 @@ new LovelyChoiceDialog(this, R.style.CheckBoxTintTheme)
 Dialog with EditText and Confirm button. You can set TextFilter object to specify acceptable input. 
 ```java
 new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
-      .setTopColor(color(R.color.darkDeepOrange))
+      .setTopColorRes(R.color.darkDeepOrange)
       .setTitle(R.string.text_input_title)
       .setMessage(R.string.text_input_message)
       .setIcon(R.drawable.ic_assignment_white_36dp) 
@@ -126,7 +126,7 @@ Dialog with standard Android ProgressBar. Not cancelable by default.
 new LovelyProgressDialog(this)
       .setIcon(R.drawable.ic_cast_connected_white_36dp)
       .setTitle(R.string.connecting_to_server)
-      .setTopColor(color(R.color.teal))
+      .setTopColorRes(R.color.teal)
       .show();
 ```
 #### LovelyCustomDialog
@@ -134,7 +134,7 @@ Here you can pass your own view to be displayed. Title, message, color header an
 ```java
 new LovelyCustomDialog(this)
       .setView(R.layout.item_donate_option)
-      .setTopColor(color(R.color.darkDeepOrange))
+      .setTopColorRes(R.color.darkDeepOrange)
       .setTitle(R.string.text_input_title)
       .setMessage(R.string.text_input_message)
       .setIcon(R.drawable.ic_assignment_white_36dp)

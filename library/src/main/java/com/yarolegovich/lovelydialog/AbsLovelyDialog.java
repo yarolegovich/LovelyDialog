@@ -5,9 +5,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -119,9 +122,13 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return (T) this;
     }
 
-    public T setTopColor(int topColor) {
+    public T setTopColor(@ColorInt int topColor) {
         findView(R.id.ld_color_area).setBackgroundColor(topColor);
         return (T) this;
+    }
+
+    public T setTopColorRes(@ColorRes int topColoRes) {
+        return setTopColor(color(topColoRes));
     }
 
     /*
@@ -177,6 +184,10 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
 
     protected String string(@StringRes int res) {
         return dialogView.getContext().getString(res);
+    }
+
+    protected int color(@ColorRes int colorRes) {
+        return ContextCompat.getColor(getContext(), colorRes);
     }
 
     protected Context getContext() {

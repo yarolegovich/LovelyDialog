@@ -1,8 +1,11 @@
 package com.yarolegovich.lovelydialog;
 
 import android.content.Context;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 
@@ -85,11 +88,15 @@ public class LovelyStandardDialog extends AbsLovelyDialog<LovelyStandardDialog> 
         return this;
     }
 
-    public LovelyStandardDialog setButtonsColor(int color) {
+    public LovelyStandardDialog setButtonsColor(@ColorInt int color) {
         positiveButton.setTextColor(color);
         negativeButton.setTextColor(color);
         neutralButton.setTextColor(color);
         return this;
+    }
+
+    public LovelyStandardDialog setButtonsColorRes(@ColorRes int colorRes) {
+        return setButtonsColor(color(colorRes));
     }
 
     public LovelyStandardDialog setOnButtonClickListener(View.OnClickListener listener) {
@@ -114,19 +121,31 @@ public class LovelyStandardDialog extends AbsLovelyDialog<LovelyStandardDialog> 
         return setPositiveButton(text, null);
     }
 
-    public LovelyStandardDialog setPositiveButtonColor(int color) {
+    public LovelyStandardDialog setPositiveButtonColor(@ColorInt int color) {
         positiveButton.setTextColor(color);
         return this;
     }
 
-    public LovelyStandardDialog setNegativeButtonColor(int color) {
+    public LovelyStandardDialog setNegativeButtonColor(@ColorInt int color) {
         negativeButton.setTextColor(color);
         return this;
     }
 
-    public LovelyStandardDialog setNeutralButtonColor(int color) {
+    public LovelyStandardDialog setNeutralButtonColor(@ColorInt int color) {
         neutralButton.setTextColor(color);
         return this;
+    }
+
+    public LovelyStandardDialog setPositiveButtonColorRes(@ColorRes int colorRes) {
+        return setPositiveButtonColor(color(colorRes));
+    }
+
+    public LovelyStandardDialog setNegativeButtonColorRes(@ColorRes int colorRes) {
+        return setNegativeButtonColor(color(colorRes));
+    }
+
+    public LovelyStandardDialog setNeutralButtonColorRes(@ColorRes int colorRes) {
+        return setNeutralButtonColor(color(colorRes));
     }
 
     @Override

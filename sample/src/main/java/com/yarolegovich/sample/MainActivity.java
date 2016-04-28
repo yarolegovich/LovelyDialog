@@ -98,8 +98,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void showStandardDialog(Bundle savedInstanceState) {
         new LovelyStandardDialog(this)
-                .setTopColor(color(R.color.indigo))
-                .setButtonsColor(color(R.color.darkDeepOrange))
+                .setTopColorRes(R.color.indigo)
+                .setButtonsColorRes(R.color.darkDeepOrange)
                 .setIcon(R.drawable.ic_star_border_white_36dp)
                 .setTitle(R.string.rate_title)
                 .setInstanceStateHandler(ID_STANDARD_DIALOG, saveStateHandler)
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void showSingleChoiceDialog(Bundle savedInstanceState) {
         ArrayAdapter<DonationOption> adapter = new DonationAdapter(this, loadDonationOptions());
         new LovelyChoiceDialog(this)
-                .setTopColor(color(R.color.darkGreen))
+                .setTopColorRes(R.color.darkGreen)
                 .setTitle(R.string.donate_title)
                 .setInstanceStateHandler(ID_SINGLE_CHOICE_DIALOG, saveStateHandler)
                 .setIcon(R.drawable.ic_local_atm_white_36dp)
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void showInfoDialog(Bundle savedInstanceState) {
         new LovelyInfoDialog(this)
-                .setTopColor(color(R.color.darkBlueGrey))
+                .setTopColorRes(R.color.darkBlueGrey)
                 .setIcon(R.drawable.ic_info_outline_white_36dp)
                 .setInstanceStateHandler(ID_INFO_DIALOG, saveStateHandler)
                 .setNotShowAgainOptionEnabled(0)
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void showMultiChoiceDialog(Bundle savedInstanceState) {
         String[] items = getResources().getStringArray(R.array.food);
         new LovelyChoiceDialog(this, R.style.CheckBoxTintTheme)
-                .setTopColor(color(R.color.darkRed))
+                .setTopColorRes(R.color.darkRed)
                 .setTitle(R.string.order_food_title)
                 .setIcon(R.drawable.ic_food_white_36dp)
                 .setInstanceStateHandler(ID_MULTI_CHOICE_DIALOG, saveStateHandler)
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void showTextInputDialog(Bundle savedInstanceState) {
         new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
-                .setTopColor(color(R.color.darkDeepOrange))
+                .setTopColorRes(R.color.darkDeepOrange)
                 .setTitle(R.string.text_input_title)
                 .setMessage(R.string.text_input_message)
                 .setIcon(R.drawable.ic_assignment_white_36dp)
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setIcon(R.drawable.ic_cast_connected_white_36dp)
                 .setTitle(R.string.connecting_to_server)
                 .setInstanceStateHandler(ID_PROGRESS_DIALOG, saveStateHandler)
-                .setTopColor(color(R.color.teal))
+                .setTopColorRes(R.color.teal)
                 .setSavedInstanceState(savedInstanceState)
                 .setCancelable(true)
                 .show();
@@ -225,7 +225,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return result;
     }
 
-    private int color(int colorRes) {
-        return ContextCompat.getColor(this, colorRes);
-    }
 }
