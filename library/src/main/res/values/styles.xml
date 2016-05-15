@@ -10,6 +10,6 @@
         <item name="android:paddingLeft">@dimen/ld_side_margin</item>
         <item name="android:paddingRight">@dimen/ld_side_margin</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/ld_primaryText</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 </resources>

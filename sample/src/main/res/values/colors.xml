@@ -8,4 +8,7 @@
     <color name="darkRed">#D32F2F</color>
     <color name="white">#FFFFFF</color>
 
+    <color name="primaryText">#212121</color>
+    <color name="secondaryText">#727272</color>
+
 </resources>

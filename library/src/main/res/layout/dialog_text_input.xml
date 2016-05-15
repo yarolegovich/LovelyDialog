@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
-                android:textColor="@color/ld_secondaryText"
+                android:textColor="?android:textColorSecondary"
                 android:textSize="18sp" />
 
             <TextView

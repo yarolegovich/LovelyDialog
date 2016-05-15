@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ld_secondaryText">#727272</color>
-    <color name="ld_primaryText">#212121</color>
     <color name="ld_textInputError">#F44336</color>
 </resources>

@@ -8,7 +8,7 @@
         android:layout_marginBottom="6dp"
         android:layout_marginLeft="@dimen/ld_side_margin"
         android:layout_marginRight="@dimen/ld_side_margin"
-        android:textColor="@color/ld_primaryText"
+        android:textColor="?android:textColorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="gone" />
@@ -20,7 +20,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="@dimen/ld_side_margin"
         android:layout_marginRight="@dimen/ld_side_margin"
-        android:textColor="@color/ld_secondaryText"
+        android:textColor="?android:textColorSecondary"
         android:textSize="16sp"
         android:visibility="gone" />
 
