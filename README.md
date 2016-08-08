@@ -23,7 +23,7 @@ Sample project that shows how to work with different dialogs and handle screen r
 Each dialog has colored top, icon, title and message + its own features. There are 6 types of dialogs available:
 * [LovelyStandardDialog] (#lovelystandarddialog)
 * [LovelyInfoDialog] (#lovelyinfodialog)
-* [LovelyTextInputDialog] (lovelytextinputdialog)
+* [LovelyTextInputDialog] (#lovelytextinputdialog)
 * [LovelyChoiceDialog] (#lovelychoicedialog)
 * [LovelyProgressDialog] (#lovelyprogressdialog)
 * [LovelyCustomDialog] (#lovelycustomdialog)
