@@ -19,7 +19,7 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
 
     private EditText inputField;
     private TextView errorMessage;
-    private TextView confirmButton;
+    private TextView confirmButton, negativeButton;
 
     private TextFilter filter;
 
@@ -33,6 +33,7 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
 
     {
         confirmButton = findView(R.id.ld_btn_confirm);
+        negativeButton = findView(R.id.ld_btn_negative);
         inputField = findView(R.id.ld_text_input);
         errorMessage = findView(R.id.ld_error_message);
         inputField.addTextChangedListener(new HideErrorOnTextChanged());
@@ -50,6 +51,21 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
 
     public LovelyTextInputDialog setConfirmButtonColor(int color) {
         confirmButton.setTextColor(color);
+        return this;
+    }
+
+    public LovelyTextInputDialog setNegativeButton(@StringRes int text, View.OnClickListener listener){
+        return setNegativeButton(string(text), listener);
+    }
+
+    public LovelyTextInputDialog setNegativeButton(String text, View.OnClickListener listener){
+        negativeButton.setText(text);
+        negativeButton.setOnClickListener(new CloseOnClickDecorator(listener));
+        return this;
+    }
+
+    public LovelyTextInputDialog setNegativeButtonColor(int color) {
+        negativeButton.setTextColor(color);
         return this;
     }
 
