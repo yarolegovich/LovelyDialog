@@ -8,7 +8,7 @@ This library is a set of simple wrapper classes that are aimed to help you easil
 ## Gradle 
 Add this into your dependencies block.
 ```
-compile 'com.yarolegovich:lovely-dialog:1.0.4'
+compile 'com.yarolegovich:lovely-dialog:1.0.5'
 ```
 
 ## Wiki
@@ -158,6 +158,21 @@ and pass it as a second argument to dialog's constructor
 ```java
 new LovelyTextInputDialog(this, R.style.TintTheme)
 ```
+###Standard dialogs compatibility
+If you don't want to rewrite your 
+```java
+Dialog.OnClickListener 
+``` 
+implementations, you can simply use 
+```java
+LovalyDialogCompat.wrap(yourImplementation)
+```
+to pass it to one of the 
+```java
+.setPositiveButton(...)
+.setNegativeButton(...)
+```
+or the like.
 ###License
 ```
 Copyright 2016 Yaroslav Shevchuk
