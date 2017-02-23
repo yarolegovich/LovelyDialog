@@ -1,5 +1,6 @@
 package com.yarolegovich.sample;
 
+import android.content.DialogInterface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
+import com.yarolegovich.lovelydialog.LovelyDialogCompat;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
@@ -105,15 +107,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setInstanceStateHandler(ID_STANDARD_DIALOG, saveStateHandler)
                 .setSavedInstanceState(savedInstanceState)
                 .setMessage(R.string.rate_message)
-                .setPositiveButton(android.R.string.ok, new View.OnClickListener() {
+                .setPositiveButton(android.R.string.ok, LovelyDialogCompat.wrap(new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(MainActivity.this,
                                 R.string.repo_waiting,
                                 Toast.LENGTH_SHORT)
                                 .show();
                     }
-                })
+                }))
                 .setNeutralButton(R.string.later, null)
                 .setNegativeButton(android.R.string.no, null)
                 .show();
@@ -199,6 +201,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
                     }
                 })
+                .setNegativeButton(android.R.string.no, null)
                 .setSavedInstanceState(savedInstanceState)
                 .show();
     }

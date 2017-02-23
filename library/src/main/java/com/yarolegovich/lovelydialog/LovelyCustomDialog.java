@@ -53,9 +53,7 @@ public class LovelyCustomDialog extends AbsLovelyDialog<LovelyCustomDialog> {
         if (addedView == null) {
             throw new IllegalStateException(string(R.string.ex_msg_dialog_view_not_set));
         }
-        View.OnClickListener clickListener = dismissOnClick ?
-                new CloseOnClickDecorator(listener) :
-                listener;
+        View.OnClickListener clickListener = new ClickListenerDecorator(listener, dismissOnClick);
         findView(viewId).setOnClickListener(clickListener);
         return this;
     }
@@ -88,6 +86,7 @@ public class LovelyCustomDialog extends AbsLovelyDialog<LovelyCustomDialog> {
 
     public interface InstanceStateManager {
         void saveInstanceState(Bundle outState);
+
         void restoreInstanceState(Bundle savedState);
     }
 }

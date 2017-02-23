@@ -2,6 +2,7 @@ package com.yarolegovich.lovelydialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ import android.widget.TextView;
 /**
  * Created by yarolegovich on 16.04.2016.
  */
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked", "WeakerAccess"})
 public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
 
     private static final String KEY_SAVED_STATE_TOKEN = "key_saved_state_token";
@@ -198,20 +199,30 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return (ViewClass) dialogView.findViewById(id);
     }
 
-    protected class CloseOnClickDecorator implements View.OnClickListener {
+    protected class ClickListenerDecorator implements View.OnClickListener {
 
         private View.OnClickListener clickListener;
+        private boolean closeOnClick;
 
-        protected CloseOnClickDecorator(View.OnClickListener clickListener) {
+        protected ClickListenerDecorator(View.OnClickListener clickListener, boolean closeOnClick) {
             this.clickListener = clickListener;
+            this.closeOnClick = closeOnClick;
         }
 
         @Override
         public void onClick(View v) {
             if (clickListener != null) {
-                clickListener.onClick(v);
+                if (clickListener instanceof LovelyDialogCompat.DialogOnClickListenerAdapter) {
+                    LovelyDialogCompat.DialogOnClickListenerAdapter listener =
+                            (LovelyDialogCompat.DialogOnClickListenerAdapter) clickListener;
+                    listener.onClick(dialog, v.getId());
+                } else {
+                    clickListener.onClick(v);
+                }
             }
-            dismiss();
+            if (closeOnClick) {
+                dismiss();
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.yarolegovich.lovelydialog;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.StringRes;

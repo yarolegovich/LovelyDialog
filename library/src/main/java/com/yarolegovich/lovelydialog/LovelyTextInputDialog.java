@@ -59,8 +59,9 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
     }
 
     public LovelyTextInputDialog setNegativeButton(String text, View.OnClickListener listener){
+        negativeButton.setVisibility(View.VISIBLE);
         negativeButton.setText(text);
-        negativeButton.setOnClickListener(new CloseOnClickDecorator(listener));
+        negativeButton.setOnClickListener(new ClickListenerDecorator(listener, true));
         return this;
     }
 
