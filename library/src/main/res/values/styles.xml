@@ -1,6 +1,4 @@
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
-
     <style name="DialogButton">
         <item name="android:textAllCaps">true</item>
         <item name="android:clickable">true</item>
