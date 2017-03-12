@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setIcon(R.drawable.ic_info_outline_white_36dp)
                 .setInstanceStateHandler(ID_INFO_DIALOG, saveStateHandler)
                 .setNotShowAgainOptionEnabled(0)
+                .setNotShowAgainOptionChecked(true)
                 .setSavedInstanceState(savedInstanceState)
                 .setTitle(R.string.info_title)
                 .setMessage(R.string.info_message)

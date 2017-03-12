@@ -8,7 +8,7 @@ This library is a set of simple wrapper classes that are aimed to help you easil
 ## Gradle 
 Add this into your dependencies block.
 ```
-compile 'com.yarolegovich:lovely-dialog:1.0.5'
+compile 'com.yarolegovich:lovely-dialog:1.0.7'
 ```
 
 ## Wiki
@@ -56,6 +56,7 @@ new LovelyInfoDialog(this)
       .setIcon(R.drawable.ic_info_outline_white_36dp)
       //This will add Don't show again checkbox to the dialog. You can pass any ID as argument
       .setNotShowAgainOptionEnabled(0)
+      .setNotShowAgainOptionChecked(true)
       .setTitle(R.string.info_title)
       .setMessage(R.string.info_message)
       .show();
@@ -159,15 +160,15 @@ and pass it as a second argument to dialog's constructor
 new LovelyTextInputDialog(this, R.style.TintTheme)
 ```
 ###Standard dialogs compatibility
-If you don't want to rewrite your 
+If you don't want to rewrite your
 ```java
-Dialog.OnClickListener 
-``` 
-implementations, you can simply use 
+Dialog.OnClickListener
+```
+implementations, you can simply use
 ```java
 LovalyDialogCompat.wrap(yourImplementation)
 ```
-to pass it to one of the 
+to pass it to one of the
 ```java
 .setPositiveButton(...)
 .setNegativeButton(...)

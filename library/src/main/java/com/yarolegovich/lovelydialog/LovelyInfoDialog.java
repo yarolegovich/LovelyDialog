@@ -52,6 +52,11 @@ public class LovelyInfoDialog extends AbsLovelyDialog<LovelyInfoDialog> {
         return this;
     }
 
+    public LovelyInfoDialog setNotShowAgainOptionChecked(boolean defaultChecked) {
+        cbDontShowAgain.setChecked(defaultChecked);
+        return this;
+    }
+
     public LovelyInfoDialog setConfirmButtonText(@StringRes int text) {
         return setConfirmButtonText(string(text));
     }
