@@ -12,26 +12,26 @@ compile 'com.yarolegovich:lovely-dialog:1.0.7'
 ```
 
 ## Wiki
-###General
+### General
 As advised in Effective Java
 >  Favor composition over inheritance.
 
 LovelyDialog doesn't subclass any Dialog related classes, it is just a lightweight extensible wrapper for Dialog and manipulations with custom view. If you would like to improve something - pull requests are appreciated.
 
-Sample project that shows how to work with different dialogs and handle screen rotation is available under the [sample module] (https://github.com/yarolegovich/LovelyDialog/tree/master/sample).
+Sample project that shows how to work with different dialogs and handle screen rotation is available under the [sample module](https://github.com/yarolegovich/LovelyDialog/tree/master/sample).
 ### Dialog types
 Each dialog has colored top, icon, title and message + its own features. There are 6 types of dialogs available:
-* [LovelyStandardDialog] (#lovelystandarddialog)
-* [LovelyInfoDialog] (#lovelyinfodialog)
-* [LovelyTextInputDialog] (#lovelytextinputdialog)
-* [LovelyChoiceDialog] (#lovelychoicedialog)
-* [LovelyProgressDialog] (#lovelyprogressdialog)
-* [LovelyCustomDialog] (#lovelycustomdialog)
+* [LovelyStandardDialog](#lovelystandarddialog)
+* [LovelyInfoDialog](#lovelyinfodialog)
+* [LovelyTextInputDialog](#lovelytextinputdialog)
+* [LovelyChoiceDialog](#lovelychoicedialog)
+* [LovelyProgressDialog](#lovelyprogressdialog)
+* [LovelyCustomDialog](#lovelycustomdialog)
 
 #### LovelyStandardDialog
 You can set positive, negative and neutral button here. Listeners can be set individually for each button, one for all three or not set at all (onClick on any button dialog will be just dismissed).
 
-````java
+```java
 new LovelyStandardDialog(this)
       .setTopColorRes(R.color.indigo)
       .setButtonsColorRes(R.color.darkDeepOrange)
@@ -47,7 +47,7 @@ new LovelyStandardDialog(this)
       .setNegativeButton(android.R.string.no, null)
       .show();
 
-````
+```
 #### LovelyInfoDialog
 Dialog for displaying information to the user, content is scrollable. There is an option to show Don't show again checkbox. If checked - dialog won't be called next time. This can be useful when showing some tutorials, for example. 
 ```java
@@ -147,7 +147,7 @@ new LovelyCustomDialog(this)
 ### Configuration changes
 There is a class LovelySaveStateHandler that helps you to persist information about which dialog was shown (if any) between configuration changes. 
 Each dialog (except LovelyCustomDialog) knows how to save and restore its state. 
-Refer to [sample project] (https://github.com/yarolegovich/LovelyDialog/blob/master/sample/src/main/java/com/yarolegovich/sample/MainActivity.java) for examples of how to deal with configuration changes.
+Refer to [sample project](https://github.com/yarolegovich/LovelyDialog/blob/master/sample/src/main/java/com/yarolegovich/sample/MainActivity.java) for examples of how to deal with configuration changes.
 ### Tinting controls
 If you want CheckBoxes, EditTexts etc. to be of different color - what you need is to define theme in xml
 ```xml
@@ -159,7 +159,7 @@ and pass it as a second argument to dialog's constructor
 ```java
 new LovelyTextInputDialog(this, R.style.TintTheme)
 ```
-###Standard dialogs compatibility
+### Standard dialogs compatibility
 If you don't want to rewrite your
 ```java
 Dialog.OnClickListener
@@ -174,7 +174,7 @@ to pass it to one of the
 .setNegativeButton(...)
 ```
 or the like.
-###License
+### License
 ```
 Copyright 2016 Yaroslav Shevchuk
 
