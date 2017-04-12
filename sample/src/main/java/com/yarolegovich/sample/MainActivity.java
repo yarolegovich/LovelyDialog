@@ -4,7 +4,10 @@ import android.content.DialogInterface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.util.Linkify;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_multi_choice_dialog).setOnClickListener(this);
         findViewById(R.id.btn_text_input_dialog).setOnClickListener(this);
         findViewById(R.id.btn_progress_dialog).setOnClickListener(this);
+
     }
 
     @Override
@@ -144,16 +148,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void showInfoDialog(Bundle savedInstanceState) {
+
+
         new LovelyInfoDialog(this)
                 .setTopColorRes(R.color.darkBlueGrey)
                 .setIcon(R.drawable.ic_info_outline_white_36dp)
                 .setInstanceStateHandler(ID_INFO_DIALOG, saveStateHandler)
                 .setNotShowAgainOptionEnabled(0)
                 .setNotShowAgainOptionChecked(true)
+                .setConfirmButtonColor(getResources().getColor(R.color.darkBlueGrey))
                 .setSavedInstanceState(savedInstanceState)
                 .setTitle(R.string.info_title)
-                .setMessage(R.string.info_message)
+                .setMessage(applyUrlFilter(getString(R.string.url_contained_text)))
+                .setMessageLikify(R.color.darkBlueGrey)
                 .show();
+    }
+
+    private SpannableString applyUrlFilter(String message) {
+        SpannableString s = new SpannableString(message);
+        Linkify.addLinks(s, Patterns.WEB_URL, null, new Linkify.MatchFilter() {
+            @Override
+            public boolean acceptMatch(CharSequence seq, int start, int end) {
+                return Linkify.sUrlMatchFilter.acceptMatch(seq, start, end);
+            }
+        }, null);
+        return s;
     }
 
 

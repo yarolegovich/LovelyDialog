@@ -61,6 +61,22 @@ new LovelyInfoDialog(this)
       .setMessage(R.string.info_message)
       .show();
 ```
+If you want to show some message that contains web urls, you can use .setMessageLikify(R.color.darkBlueGrey) passing color for that will highlight urls, for example
+```java
+new LovelyInfoDialog(this)
+                .setTopColorRes(R.color.darkBlueGrey)
+                .setIcon(R.drawable.ic_info_outline_white_36dp)
+                .setInstanceStateHandler(ID_INFO_DIALOG, saveStateHandler)
+                .setNotShowAgainOptionEnabled(0)
+                .setNotShowAgainOptionChecked(true)
+                .setConfirmButtonColor(getResources().getColor(R.color.darkBlueGrey))
+                .setSavedInstanceState(savedInstanceState)
+                .setTitle(R.string.info_title)
+                .setMessage(applyUrlFilter(getString(R.string.url_contained_text)))
+                .setMessageLikify(R.color.darkBlueGrey)
+                .show();
+```
+
 #### LovelyChoiceDialog
 Here you can use either single choice or multi choice dialogs. In case of multi choice dialog - Confirm button will appear. You can pass items as array, List (.toString() will be used to display them as simple text items) or provide your custom adapter.
 
