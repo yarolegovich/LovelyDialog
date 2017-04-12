@@ -29,4 +29,5 @@
     <string name="later">Later</string>
     <string name="repo_waiting">GitHub repo is waiting for your star!</string>
     <string name="you_donated">"You donated: %s!"</string>
+    <string name="url_contained_text">"This is a website, http://www.stackoverflow.com"</string>
 </resources>

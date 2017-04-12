@@ -13,6 +13,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -120,6 +121,12 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
 
     public T setMessageGravity(int gravity) {
         messageView.setGravity(gravity);
+        return (T) this;
+    }
+
+    public T setMessageLikify(int color) {
+        messageView.setMovementMethod(LinkMovementMethod.getInstance());
+        messageView.setLinkTextColor(color);
         return (T) this;
     }
 

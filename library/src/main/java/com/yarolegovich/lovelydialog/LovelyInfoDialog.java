@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.StringRes;
 import android.view.View;
 import android.widget.Button;
@@ -67,6 +68,11 @@ public class LovelyInfoDialog extends AbsLovelyDialog<LovelyInfoDialog> {
     }
 
     public LovelyInfoDialog setConfirmButtonColor(int color) {
+        confirmButton.setTextColor(color);
+        return this;
+    }
+
+    public LovelyInfoDialog setConfirmButtonTextColor(int color) {
         confirmButton.setTextColor(color);
         return this;
     }
