@@ -1,7 +1,5 @@
 package com.yarolegovich.lovelydialog;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
@@ -11,9 +9,9 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +25,7 @@ public class LovelyChoiceDialog extends AbsLovelyDialog<LovelyChoiceDialog> {
     private static final String KEY_ITEM_CHECKED_STATES = "key_item_checked_states";
 
     private ListView choicesList;
-    private TextView confirmButton;
+    private Button confirmButton;
 
     public LovelyChoiceDialog(Context context) {
         super(context);
@@ -84,7 +82,7 @@ public class LovelyChoiceDialog extends AbsLovelyDialog<LovelyChoiceDialog> {
     public <T> LovelyChoiceDialog setItemsMultiChoice(ArrayAdapter<T> adapter, boolean[] selectionState, OnItemsSelectedListener<T> itemsSelectedListener) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View confirmBtnContainer = inflater.inflate(R.layout.item_footer_confirm, null);
-        confirmButton = (TextView) confirmBtnContainer.findViewById(R.id.ld_btn_confirm);
+        confirmButton = (Button) confirmBtnContainer.findViewById(R.id.ld_btn_confirm);
         confirmButton.setOnClickListener(new ItemsSelectedAdapter<>(itemsSelectedListener));
         choicesList.addFooterView(confirmBtnContainer);
 

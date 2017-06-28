@@ -1,9 +1,9 @@
 package com.yarolegovich.sample;
 
 import android.content.DialogInterface;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,9 +13,9 @@ import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import com.yarolegovich.lovelydialog.LovelyDialogCompat;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
+import com.yarolegovich.lovelydialog.LovelySaveStateHandler;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 import com.yarolegovich.lovelydialog.LovelyTextInputDialog;
-import com.yarolegovich.lovelydialog.LovelySaveStateHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,9 +101,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void showStandardDialog(Bundle savedInstanceState) {
         new LovelyStandardDialog(this)
                 .setTopColorRes(R.color.indigo)
+                .setTopTitle(R.string.rate_title)
+                .setTopTitleColor(Color.WHITE)
                 .setButtonsColorRes(R.color.darkDeepOrange)
                 .setIcon(R.drawable.ic_star_border_white_36dp)
-                .setTitle(R.string.rate_title)
                 .setInstanceStateHandler(ID_STANDARD_DIALOG, saveStateHandler)
                 .setSavedInstanceState(savedInstanceState)
                 .setMessage(R.string.rate_message)
@@ -165,8 +166,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String[] items = getResources().getStringArray(R.array.food);
         new LovelyChoiceDialog(this, R.style.CheckBoxTintTheme)
                 .setTopColorRes(R.color.darkRed)
-                .setTitle(R.string.order_food_title)
-                .setIcon(R.drawable.ic_food_white_36dp)
+                .setTopTitle(R.string.order_food_title)
+                .setTopTitleColor(Color.WHITE)
                 .setInstanceStateHandler(ID_MULTI_CHOICE_DIALOG, saveStateHandler)
                 .setItemsMultiChoice(items, new LovelyChoiceDialog.OnItemsSelectedListener<String>() {
                     @Override
