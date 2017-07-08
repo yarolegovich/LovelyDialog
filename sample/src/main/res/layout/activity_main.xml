@@ -56,4 +56,12 @@
         android:text="@string/btn_progress_dialog"
         app:backgroundTint="@color/teal" />
 
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_progress_horizontal_dialog"
+        style="@style/DialogTriggerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_progress_horizontal_dialog"
+        app:backgroundTint="@color/purple" />
+
 </LinearLayout>

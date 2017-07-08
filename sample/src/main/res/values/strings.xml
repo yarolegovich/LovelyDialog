@@ -24,6 +24,7 @@
     <string name="btn_multi_choice_dialog">Multi choice dialog</string>
     <string name="btn_info_dialog">Info dialog</string>
     <string name="btn_progress_dialog">Progress dialog</string>
+    <string name="btn_progress_horizontal_dialog">Horizontal progress dialog</string>
     <string name="you_ordered">You\'ve ordered:\n%s</string>
     <string name="confirm">Confirm</string>
     <string name="later">Later</string>
