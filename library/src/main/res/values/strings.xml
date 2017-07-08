@@ -1,6 +1,9 @@
 <resources>
     <string name="dont_show_again">Don\'t show again</string>
-
     <string name="ex_msg_dialog_choice_confirm">Confirm button is only for multi choice lists. You must call setMultiChoiceItems first</string>
     <string name="ex_msg_dialog_view_not_set">You must call method setView before calling configureView.</string>
+    <string name="ex_msg_dialog_progress_not_horizontal">You must set the progress bar to horizontal first</string>
+    <string name="ex_msg_dialog_progress_no_max">Progress bar must have a max and can\'t be negative</string>
+    <string name="ex_msg_dialog_no_observer">You must have an observable if you want to have a horizontal progress bar dialog</string>
+    <string name="ex_msg_dialog_observer">You can\'t have an observable if you don\'t have a horizontal progress bar dialog</string>
 </resources>

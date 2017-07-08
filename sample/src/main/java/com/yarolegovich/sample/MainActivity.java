@@ -1,7 +1,7 @@
 package com.yarolegovich.sample;
 
 import android.content.DialogInterface;
-import android.support.v4.content.ContextCompat;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +13,7 @@ import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import com.yarolegovich.lovelydialog.LovelyDialogCompat;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
+import com.yarolegovich.lovelydialog.LovelyProgressObservable;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 import com.yarolegovich.lovelydialog.LovelyTextInputDialog;
 import com.yarolegovich.lovelydialog.LovelySaveStateHandler;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int ID_MULTI_CHOICE_DIALOG = R.id.btn_multi_choice_dialog;
     private static final int ID_TEXT_INPUT_DIALOG = R.id.btn_text_input_dialog;
     private static final int ID_PROGRESS_DIALOG = R.id.btn_progress_dialog;
+    private static final int ID_PROGRESS_HORIZONTAL_DIALOG = R.id.btn_progress_horizontal_dialog;
 
     /*
      * This guy should be shared by multiple dialogs. You need to pass this object
@@ -51,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_multi_choice_dialog).setOnClickListener(this);
         findViewById(R.id.btn_text_input_dialog).setOnClickListener(this);
         findViewById(R.id.btn_progress_dialog).setOnClickListener(this);
+        findViewById(R.id.btn_progress_horizontal_dialog).setOnClickListener(this);
+
     }
 
     @Override
@@ -78,6 +82,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case ID_PROGRESS_DIALOG:
                 showProgressDialog(savedInstanceState);
+                break;
+            case ID_PROGRESS_HORIZONTAL_DIALOG:
+                showProgressHorizontalDialog(savedInstanceState);
                 break;
         }
     }
@@ -219,6 +226,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .show();
     }
 
+    private void showProgressHorizontalDialog(Bundle savedInstanceState) {
+        final LovelyProgressObservable progress = new LovelyProgressObservable();
+
+        //Run in background
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (progress.getProgress() < 100) {
+                    SystemClock.sleep(50);
+
+                    //Progress must be updated on the UI thread
+                    MainActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //If rotating then stop updating progress
+                            if (!MainActivity.this.isChangingConfigurations())
+                                progress.setProgress(progress.getProgress() + 1);
+                        }
+                    });
+                }
+            }
+        }).start();
+
+        new LovelyProgressDialog(MainActivity.this)
+                .setIcon(R.drawable.ic_cast_connected_white_36dp)
+                .setTitle(R.string.connecting_to_server)
+                .setInstanceStateHandler(ID_PROGRESS_HORIZONTAL_DIALOG, saveStateHandler)
+                .setTopColorRes(R.color.purple)
+                .setSavedInstanceState(savedInstanceState)
+                .setHorizontal(true)
+                .setMax(100)
+                .setProgressObservable(progress)
+                .show();
+    }
+
     private List<DonationOption> loadDonationOptions() {
         List<DonationOption> result = new ArrayList<>();
         String[] raw = getResources().getStringArray(R.array.donations);
@@ -228,5 +270,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return result;
     }
-
 }
