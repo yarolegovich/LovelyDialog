@@ -5,7 +5,7 @@
     <string name="rate_message">Your star won\'t change or influence anything (maybe will make me a bit happier).</string>
 
     <string name="text_input_title">Type your name</string>
-    <string name="text_input_message">Input must match \\\\w+ or dialog won\'t accept it. That is because TextFilter object is set.</string>
+    <string name="text_input_message">Input must match \\\\w+ and not empty or dialog won\'t accept it. That is because TextFilter object is set.</string>
     <string name="text_input_error_message">I told you. Please type something correct.</string>
 
     <string name="connecting_to_server">Connecting to server</string>
@@ -29,4 +29,5 @@
     <string name="later">Later</string>
     <string name="repo_waiting">GitHub repo is waiting for your star!</string>
     <string name="you_donated">"You donated: %s!"</string>
+    <string name="text_input_empty_error_message">Text input empty</string>
 </resources>

@@ -191,10 +191,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setMessage(R.string.text_input_message)
                 .setIcon(R.drawable.ic_assignment_white_36dp)
                 .setInstanceStateHandler(ID_TEXT_INPUT_DIALOG, saveStateHandler)
-                .setInputFilter(R.string.text_input_error_message, new LovelyTextInputDialog.TextFilter() {
+                .setInputFilter(new LovelyTextInputDialog.TextFilter() {
                     @Override
-                    public boolean check(String text) {
-                        return text.matches("\\w+");
+                    public String check(String text) {
+                        // check for error and return the error string
+                        if (text.matches("\\w+"))
+                            return getString(R.string.text_input_error_message);
+
+                        if (text.isEmpty())
+                            return getString(R.string.text_input_empty_error_message);
+                        return null;
                     }
                 })
                 .setConfirmButton(android.R.string.ok, new LovelyTextInputDialog.OnTextInputConfirmListener() {

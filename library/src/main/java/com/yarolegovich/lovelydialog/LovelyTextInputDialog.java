@@ -24,20 +24,20 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
 
     private TextFilter filter;
 
-    public LovelyTextInputDialog(Context context) {
-        super(context);
-    }
-
-    public LovelyTextInputDialog(Context context, int theme) {
-        super(context, theme);
-    }
-
     {
         confirmButton = findView(R.id.ld_btn_confirm);
         negativeButton = findView(R.id.ld_btn_negative);
         inputField = findView(R.id.ld_text_input);
         errorMessage = findView(R.id.ld_error_message);
         inputField.addTextChangedListener(new HideErrorOnTextChanged());
+    }
+
+    public LovelyTextInputDialog(Context context) {
+        super(context);
+    }
+
+    public LovelyTextInputDialog(Context context, int theme) {
+        super(context, theme);
     }
 
     public LovelyTextInputDialog setConfirmButton(@StringRes int text, OnTextInputConfirmListener listener) {
@@ -55,11 +55,11 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
         return this;
     }
 
-    public LovelyTextInputDialog setNegativeButton(@StringRes int text, View.OnClickListener listener){
+    public LovelyTextInputDialog setNegativeButton(@StringRes int text, View.OnClickListener listener) {
         return setNegativeButton(string(text), listener);
     }
 
-    public LovelyTextInputDialog setNegativeButton(String text, View.OnClickListener listener){
+    public LovelyTextInputDialog setNegativeButton(String text, View.OnClickListener listener) {
         negativeButton.setVisibility(View.VISIBLE);
         negativeButton.setText(text);
         negativeButton.setOnClickListener(new ClickListenerDecorator(listener, true));
@@ -71,13 +71,9 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
         return this;
     }
 
-    public LovelyTextInputDialog setInputFilter(@StringRes int errorMessage, TextFilter filter) {
-        return setInputFilter(string(errorMessage), filter);
-    }
-
-    public LovelyTextInputDialog setInputFilter(String errorMessage, TextFilter filter) {
+    public LovelyTextInputDialog setInputFilter(TextFilter filter) {
         this.filter = filter;
-        this.errorMessage.setText(errorMessage);
+        this.errorMessage.setText(filter.check(inputField.getText().toString()));
         return this;
     }
 
@@ -143,6 +139,14 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
         return R.layout.dialog_text_input;
     }
 
+    public interface OnTextInputConfirmListener {
+        void onTextInputConfirmed(String text);
+    }
+
+    public interface TextFilter {
+        String check(String text);
+    }
+
     private class TextInputListener implements View.OnClickListener {
 
         private OnTextInputConfirmListener wrapped;
@@ -156,8 +160,9 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
             String text = inputField.getText().toString();
 
             if (filter != null) {
-                boolean isWrongInput = !filter.check(text);
-                if (isWrongInput) {
+                String errorMessageText = filter.check(text);
+                errorMessage.setText(errorMessageText);
+                if (errorMessageText != null && !errorMessageText.isEmpty()) {
                     setError();
                     return;
                 }
@@ -187,13 +192,5 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
         public void afterTextChanged(Editable s) {
 
         }
-    }
-
-    public interface OnTextInputConfirmListener {
-        void onTextInputConfirmed(String text);
-    }
-
-    public interface TextFilter {
-        boolean check(String text);
     }
 }
