@@ -13,9 +13,10 @@ Add this into your dependencies block.
 
 and this to project 
 ```
-dependencies {
-      compile 'com.github.thedude61636:LovelyDialog:-SNAPSHOT'
-}
+repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
 ```
 
 ## Wiki
