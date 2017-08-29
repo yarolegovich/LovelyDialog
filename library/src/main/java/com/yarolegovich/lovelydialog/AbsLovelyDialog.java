@@ -1,5 +1,6 @@
 package com.yarolegovich.lovelydialog;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -178,6 +179,10 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     }
 
     public Dialog show() {
+        boolean showDialog = true;
+        if (getContext() instanceof Activity) {
+            showDialog = !((Activity) getContext()).isFinishing() && !isShowing();
+        }
         dialog.show();
         return dialog;
     }
@@ -197,7 +202,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     void restoreState(Bundle savedState) {
     }
 
-    boolean isShowing() {
+    public boolean isShowing() {
         return dialog != null && dialog.isShowing();
     }
 
