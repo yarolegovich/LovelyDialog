@@ -183,7 +183,8 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         if (getContext() instanceof Activity) {
             showDialog = !((Activity) getContext()).isFinishing() && !isShowing();
         }
-        dialog.show();
+        if (showDialog)
+            dialog.show();
         return dialog;
     }
 
