@@ -13,7 +13,7 @@ Add this into your dependencies block.
 
 and this to project 
 ```
-repositories {
+        repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
@@ -138,7 +138,7 @@ Dialog with EditText and Confirm button. You can set TextFilter object to specif
                 .setNegativeButton(android.R.string.no, null)
                 .setSavedInstanceState(savedInstanceState)
                 .show();
-    }
+ }
 ```
 #### LovelyProgressDialog
 Dialog with standard Android ProgressBar. Not cancelable by default.

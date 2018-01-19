@@ -5,14 +5,15 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'com.novoda:bintray-release:0.3.4'
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.novoda:bintray-release:0.8.0'
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 }
 
@@ -27,6 +28,6 @@ ext {
     uploadName = 'LovelyDialog'
     description = 'This library is a set of simple wrapper classes that are aimed to help you easily create fancy dialogs.'
     publishVersion = '1.0.8'
-    supportLibVersion = '25.3.1'
+    supportLibVersion = '27.0.2'
     licences = ['Apache-2.0']
 }
