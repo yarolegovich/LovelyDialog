@@ -1,8 +1,8 @@
 package com.yarolegovich.lovelydialog;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -33,6 +34,8 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     private TextView topTitleView;
     private TextView titleView;
     private TextView messageView;
+    private LinearLayout titleAndMessageView;
+    private LinearLayout topView;
 
     public AbsLovelyDialog(Context context) {
         init(new AlertDialog.Builder(context));
@@ -50,6 +53,8 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         titleView = findView(R.id.ld_title);
         messageView = findView(R.id.ld_message);
         topTitleView = findView(R.id.ld_top_title);
+        titleAndMessageView = findView(R.id.titleAndMessageView);
+        topView = findView(R.id.ld_color_area);
     }
 
     @LayoutRes
@@ -60,6 +65,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     }
 
     public T setMessage(CharSequence message) {
+        titleAndMessageView.setVisibility(View.VISIBLE);
         messageView.setVisibility(View.VISIBLE);
         messageView.setText(message);
         return (T) this;
@@ -74,35 +80,47 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     }
 
     public T setTitle(CharSequence title) {
+        titleAndMessageView.setVisibility(View.VISIBLE);
         titleView.setVisibility(View.VISIBLE);
         titleView.setText(title);
         return (T) this;
     }
 
     public T setTopTitle(CharSequence title) {
+        topView.setVisibility(View.VISIBLE);
         topTitleView.setVisibility(View.VISIBLE);
         topTitleView.setText(title);
         return (T) this;
     }
 
     public T setTopTitleColor(int color) {
+        topView.setVisibility(View.VISIBLE);
         topTitleView.setTextColor(color);
         return (T) this;
     }
 
+    public T setTopTitleColorRes(@ColorRes int topTitleColorRes) {
+        topView.setVisibility(View.VISIBLE);
+        topTitleView.setTextColor(color(topTitleColorRes));
+        return (T) this;
+    }
+
     public T setIcon(Bitmap bitmap) {
+        topView.setVisibility(View.VISIBLE);
         iconView.setVisibility(View.VISIBLE);
         iconView.setImageBitmap(bitmap);
         return (T) this;
     }
 
     public T setIcon(Drawable drawable) {
+        topView.setVisibility(View.VISIBLE);
         iconView.setVisibility(View.VISIBLE);
         iconView.setImageDrawable(drawable);
         return (T) this;
     }
 
     public T setIcon(@DrawableRes int iconRes) {
+        topView.setVisibility(View.VISIBLE);
         iconView.setVisibility(View.VISIBLE);
         iconView.setImageResource(iconRes);
         return (T) this;
@@ -124,7 +142,8 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     }
 
     public T setTopColor(@ColorInt int topColor) {
-        findView(R.id.ld_color_area).setBackgroundColor(topColor);
+        topView.setVisibility(View.VISIBLE);
+        topView.setBackgroundColor(topColor);
         return (T) this;
     }
 
@@ -160,7 +179,12 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     }
 
     public Dialog show() {
-        dialog.show();
+        boolean showDialog = true;
+        if (getContext() instanceof Activity) {
+            showDialog = !((Activity) getContext()).isFinishing() && !isShowing();
+        }
+        if (showDialog)
+            dialog.show();
         return dialog;
     }
 
@@ -179,7 +203,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     void restoreState(Bundle savedState) {
     }
 
-    boolean isShowing() {
+    public boolean isShowing() {
         return dialog != null && dialog.isShowing();
     }
 

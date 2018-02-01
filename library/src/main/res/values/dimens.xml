@@ -1,4 +1,7 @@
 <resources>
     <dimen name="ld_side_margin">22dp</dimen>
     <dimen name="ld_side_cb_margin">16dp</dimen>
+    <dimen name="title_message_top_margin">12dp</dimen>
+    <dimen name="list_bottom_margin">4dp</dimen>
+    <dimen name="error_text_bottom_margin">8dp</dimen>
 </resources>

@@ -8,7 +8,15 @@ This library is a set of simple wrapper classes that are aimed to help you easil
 ## Gradle 
 Add this into your dependencies block.
 ```
-compile 'com.yarolegovich:lovely-dialog:1.0.7'
+      compile 'com.github.thedude61636:LovelyDialog:-SNAPSHOT'
+```
+
+and this to project 
+```
+        repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
 ```
 
 ## Wiki
@@ -102,24 +110,35 @@ new LovelyChoiceDialog(this, R.style.CheckBoxTintTheme)
 #### LovelyTextInputDialog
 Dialog with EditText and Confirm button. You can set TextFilter object to specify acceptable input. 
 ```java
-new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
-      .setTopColorRes(R.color.darkDeepOrange)
-      .setTitle(R.string.text_input_title)
-      .setMessage(R.string.text_input_message)
-      .setIcon(R.drawable.ic_assignment_white_36dp) 
-      .setInputFilter(R.string.text_input_error_message, new LovelyTextInputDialog.TextFilter() {
-          @Override
-          public boolean check(String text) {
-              return text.matches("\\w+");
-          }
-      })
-      .setConfirmButton(android.R.string.ok, new LovelyTextInputDialog.OnTextInputConfirmListener() {
-           @Override
-           public void onTextInputConfirmed(String text) {
-              Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
-           }
-      }) 
-      .show();
+ private void showTextInputDialog(Bundle savedInstanceState) {
+        new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
+                .setTopColorRes(R.color.darkDeepOrange)
+                .setTitle(R.string.text_input_title)
+                .setMessage(R.string.text_input_message)
+                .setIcon(R.drawable.ic_assignment_white_36dp)
+                .setInstanceStateHandler(ID_TEXT_INPUT_DIALOG, saveStateHandler)
+                .setInputFilter(new LovelyTextInputDialog.TextFilter() {
+                    @Override
+                    public String check(String text) {
+                        // check for error and return the error string
+                        if (text.matches("\\w+"))
+                            return getString(R.string.text_input_error_message);
+
+                        if (text.isEmpty())
+                            return getString(R.string.text_input_empty_error_message);
+                        return null;
+                    }
+                })
+                .setConfirmButton(android.R.string.ok, new LovelyTextInputDialog.OnTextInputConfirmListener() {
+                    @Override
+                    public void onTextInputConfirmed(String text) {
+                        Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .setSavedInstanceState(savedInstanceState)
+                .show();
+ }
 ```
 #### LovelyProgressDialog
 Dialog with standard Android ProgressBar. Not cancelable by default.

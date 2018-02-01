@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/titleAndMessageView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/title_message_top_margin"
+    android:orientation="vertical"
+    android:visibility="gone">
 
     <TextView
         android:id="@id/ld_title"
@@ -23,5 +29,4 @@
         android:textColor="?android:textColorSecondary"
         android:textSize="16sp"
         android:visibility="gone" />
-
-</merge>
+</LinearLayout>

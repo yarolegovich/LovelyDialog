@@ -2,19 +2,19 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.2"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.1.1'
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
 }
 
 publish {
