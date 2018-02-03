@@ -3,6 +3,7 @@ package com.yarolegovich.lovelydialog;
 import android.content.Context;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.view.View;
@@ -32,6 +33,15 @@ public class LovelyStandardDialog extends AbsLovelyDialog<LovelyStandardDialog> 
     public LovelyStandardDialog(Context context, int theme) {
         super(context, theme);
     }
+
+    public LovelyStandardDialog(Context context, ButtonLayout buttonLayout) {
+        super(context, 0, buttonLayout.layoutRes);
+    }
+
+    public LovelyStandardDialog(Context context, int theme, ButtonLayout buttonLayout) {
+        super(context, theme, buttonLayout.layoutRes);
+    }
+
 
     {
         positiveButton = findView(R.id.ld_btn_yes);
@@ -148,6 +158,15 @@ public class LovelyStandardDialog extends AbsLovelyDialog<LovelyStandardDialog> 
 
     @Override
     protected int getLayout() {
-        return R.layout.dialog_standard;
+        return ButtonLayout.HORIZONTAL.layoutRes;
+    }
+
+    public enum ButtonLayout {
+        HORIZONTAL(R.layout.dialog_standard),
+        VERTICAL(R.layout.dialog_standard_vertical);
+        final @LayoutRes int layoutRes;
+        ButtonLayout(@LayoutRes int layoutRes) {
+            this.layoutRes = layoutRes;
+        }
     }
 }

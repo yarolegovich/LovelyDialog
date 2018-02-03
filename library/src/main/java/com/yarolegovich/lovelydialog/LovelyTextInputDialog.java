@@ -2,6 +2,7 @@ package com.yarolegovich.lovelydialog;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -37,6 +38,11 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
         inputField = findView(R.id.ld_text_input);
         errorMessage = findView(R.id.ld_error_message);
         inputField.addTextChangedListener(new HideErrorOnTextChanged());
+    }
+
+    public LovelyTextInputDialog configureEditText(@NonNull ViewConfigurator<EditText> viewConfigurator) {
+        viewConfigurator.configureView(inputField);
+        return this;
     }
 
     public LovelyTextInputDialog setConfirmButton(@StringRes int text, OnTextInputConfirmListener listener) {

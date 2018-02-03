@@ -14,6 +14,7 @@ import com.yarolegovich.lovelydialog.LovelyDialogCompat;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog.ButtonLayout;
 import com.yarolegovich.lovelydialog.LovelyTextInputDialog;
 import com.yarolegovich.lovelydialog.LovelySaveStateHandler;
 
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void showStandardDialog(Bundle savedInstanceState) {
-        new LovelyStandardDialog(this)
+        new LovelyStandardDialog(this, ButtonLayout.VERTICAL)
                 .setTopColorRes(R.color.indigo)
                 .setButtonsColorRes(R.color.darkDeepOrange)
                 .setIcon(R.drawable.ic_star_border_white_36dp)
@@ -107,15 +108,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setInstanceStateHandler(ID_STANDARD_DIALOG, saveStateHandler)
                 .setSavedInstanceState(savedInstanceState)
                 .setMessage(R.string.rate_message)
-                .setPositiveButton(android.R.string.ok, LovelyDialogCompat.wrap(new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(MainActivity.this,
-                                R.string.repo_waiting,
-                                Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                }))
+                .setPositiveButton(android.R.string.ok, LovelyDialogCompat.wrap(
+                    (dialog, which) -> Toast.makeText(MainActivity.this,
+                        R.string.repo_waiting,
+                        Toast.LENGTH_SHORT)
+                        .show()))
                 .setNeutralButton(R.string.later, null)
                 .setNegativeButton(android.R.string.no, null)
                 .show();
@@ -130,15 +127,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setInstanceStateHandler(ID_SINGLE_CHOICE_DIALOG, saveStateHandler)
                 .setIcon(R.drawable.ic_local_atm_white_36dp)
                 .setMessage(R.string.donate_message)
-                .setItems(adapter, new LovelyChoiceDialog.OnItemSelectedListener<DonationOption>() {
-                    @Override
-                    public void onItemSelected(int position, DonationOption item) {
-                        Toast.makeText(MainActivity.this,
-                                getString(R.string.you_donated, item.amount),
-                                Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                })
+                .setItems(adapter, (position, item) ->
+                    Toast.makeText(MainActivity.this,
+                        getString(R.string.you_donated, item.amount),
+                        Toast.LENGTH_SHORT)
+                        .show())
                 .setSavedInstanceState(savedInstanceState)
                 .show();
     }
@@ -168,15 +161,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setTitle(R.string.order_food_title)
                 .setIcon(R.drawable.ic_food_white_36dp)
                 .setInstanceStateHandler(ID_MULTI_CHOICE_DIALOG, saveStateHandler)
-                .setItemsMultiChoice(items, new LovelyChoiceDialog.OnItemsSelectedListener<String>() {
-                    @Override
-                    public void onItemsSelected(List<Integer> positions, List<String> items) {
-                        Toast.makeText(MainActivity.this,
-                                getString(R.string.you_ordered, TextUtils.join("\n", items)),
-                                Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                })
+                .setItemsMultiChoice(items, (positions, items1) ->
+                    Toast.makeText(MainActivity.this,
+                        getString(R.string.you_ordered, TextUtils.join("\n", items1)),
+                        Toast.LENGTH_SHORT)
+                        .show())
                 .setConfirmButtonText(R.string.confirm)
                 .setSavedInstanceState(savedInstanceState)
                 .show();
@@ -196,14 +185,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         return text.matches("\\w+");
                     }
                 })
-                .setConfirmButton(android.R.string.ok, new LovelyTextInputDialog.OnTextInputConfirmListener() {
-                    @Override
-                    public void onTextInputConfirmed(String text) {
-                        Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
-                    }
-                })
+                .setConfirmButton(android.R.string.ok, text ->
+                    Toast.makeText(
+                        MainActivity.this, text,
+                        Toast.LENGTH_SHORT)
+                        .show())
                 .setNegativeButton(android.R.string.no, null)
                 .setSavedInstanceState(savedInstanceState)
+                .configureEditText(editText -> editText.setMaxLines(1))
                 .show();
     }
 
