@@ -24,6 +24,6 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:${rootProject.supportLibVersion}"
-    compile project(':library')
+    implementation "com.android.support:appcompat-v7:${rootProject.supportLibVersion}"
+    implementation "com.yarolegovich:lovely-dialog:1.1.0"
 }

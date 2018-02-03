@@ -8,7 +8,7 @@ This library is a set of simple wrapper classes that are aimed to help you easil
 ## Gradle 
 Add this into your dependencies block.
 ```
-compile 'com.yarolegovich:lovely-dialog:1.0.7'
+compile 'com.yarolegovich:lovely-dialog:1.1.0'
 ```
 
 ## Wiki
@@ -28,11 +28,24 @@ Each dialog has colored top, icon, title and message + its own features. There a
 * [LovelyProgressDialog](#lovelyprogressdialog)
 * [LovelyCustomDialog](#lovelycustomdialog)
 
+### Access to inner View objects
+
+Starting from a version 1.1.0 of the library, you have an access to dialog's inner `View` objects via methods whose names are prefixed with `configure`. For example:
+
+```java
+lovelyDialog
+      .configureView(rootView -> /* you can find any view here, view ids are prefixed with ld_ */)
+      .configureTitleView(title -> title.setTextSize(customTextSize))
+      .configureMessageView(message -> message.getPaint().setShader(customShader))
+      .show();
+```
+I advise not to overuse this feature. If you are doing it, think of creating a custom Dialog subclass. `LovelyTextInpuDialog` exposes its `EditText` via `configureEditText`.
+
 #### LovelyStandardDialog
 You can set positive, negative and neutral button here. Listeners can be set individually for each button, one for all three or not set at all (onClick on any button dialog will be just dismissed).
 
 ```java
-new LovelyStandardDialog(this)
+new LovelyStandardDialog(this, LovelyStandardDialog.ButtonLayout.VERTICAL)
       .setTopColorRes(R.color.indigo)
       .setButtonsColorRes(R.color.darkDeepOrange)
       .setIcon(R.drawable.ic_star_border_white_36dp)

@@ -14,7 +14,7 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:${rootProject.supportLibVersion}"
+    implementation "com.android.support:appcompat-v7:${rootProject.supportLibVersion}"
 }
 
 publish {

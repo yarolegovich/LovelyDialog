@@ -28,7 +28,7 @@ ext {
     groupId = 'com.yarolegovich'
     uploadName = 'LovelyDialog'
     description = 'This library is a set of simple wrapper classes that are aimed to help you easily create fancy dialogs.'
-    publishVersion = '1.0.7'
+    publishVersion = '1.1.0'
     licences = ['Apache-2.0']
 
     compileSdkVersion = 27
