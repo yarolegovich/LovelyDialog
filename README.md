@@ -57,6 +57,7 @@ new LovelyStandardDialog(this, LovelyStandardDialog.ButtonLayout.VERTICAL)
               Toast.makeText(context, "positive clicked", Toast.LENGTH_SHORT).show();
           }
       }) 
+      .setNeutralButton(R.string.later, null)
       .setNegativeButton(android.R.string.no, null)
       .show();
 
