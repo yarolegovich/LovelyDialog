@@ -7,6 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
     }
 }
 
@@ -23,20 +24,24 @@ task clean(type: Delete) {
 
 
 ext {
-    userOrg = 'yarolegovich'
-    groupId = 'com.yarolegovich'
-    uploadName = 'LovelyDialog'
-    description = 'This library is a set of simple wrapper classes that are aimed to help you easily create fancy dialogs.'
-    publishVersion = '1.1.0'
-    licences = ['Apache-2.0']
-
     compileSdkVersion = 29
     buildToolsVersion = '29.0.2'
     targetSdkVersion = 29
 
+    upload = [
+            user       : 'yarolegovich',
+            userOrg    : 'yarolegovich',
+            repository : 'maven',
+            groupId    : 'com.yarolegovich',
+            uploadName : 'LovelyDialog',
+            description: 'This library is a set of simple wrapper classes that are aimed to help you easily create fancy dialogs.',
+            version    : '1.1.1',
+            licences   : ['Apache-2.0']
+    ]
+
     deps = [
-            androidxCore   : 'androidx.core:core:1.3.1',
-            androidxCompat : 'androidx.appcompat:appcompat:1.1.0',
-            annotations    : 'androidx.annotation:annotation:1.1.0'
+            androidxCore  : 'androidx.core:core:1.3.1',
+            androidxCompat: 'androidx.appcompat:appcompat:1.1.0',
+            annotations   : 'androidx.annotation:annotation:1.1.0'
     ]
 }
