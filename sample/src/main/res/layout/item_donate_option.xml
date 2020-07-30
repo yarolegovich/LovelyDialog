@@ -28,6 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/ld_side_margin"
         android:layout_marginRight="@dimen/ld_side_margin"
-        android:gravity="right" />
+        android:gravity="end" />
 
 </LinearLayout>

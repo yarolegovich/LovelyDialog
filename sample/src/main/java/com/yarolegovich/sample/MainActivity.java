@@ -1,13 +1,14 @@
 package com.yarolegovich.sample;
 
-import android.content.DialogInterface;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import com.yarolegovich.lovelydialog.LovelyDialogCompat;
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LovelySaveStateHandler saveStateHandler;
 
     @Override
-    @SuppressWarnings("ConstantConditions")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -84,13 +84,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         saveStateHandler.saveInstanceState(outState);
         super.onSaveInstanceState(outState);
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedState) {
+    protected void onRestoreInstanceState(@NonNull Bundle savedState) {
         super.onRestoreInstanceState(savedState);
         if (LovelySaveStateHandler.wasDialogOnScreen(savedState)) {
             //Dialog won't be restarted automatically, so we need to call this method.

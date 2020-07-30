@@ -1,5 +1,7 @@
 package com.yarolegovich.sample;
 
+import androidx.annotation.NonNull;
+
 /**
  * Created by yarolegovich on 17.04.2016.
  */
@@ -13,6 +15,7 @@ public class DonationOption {
         this.description = description;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "DonationOption{" +

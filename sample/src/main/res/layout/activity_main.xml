@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="com.yarolegovich.sample.MainActivity">
 
-    <android.support.v7.widget.AppCompatButton
+    <Button
         android:id="@+id/btn_standard_dialog"
         style="@style/DialogTriggerButton"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:text="@string/btn_standard_dialog"
         app:backgroundTint="@color/indigo" />
 
-    <android.support.v7.widget.AppCompatButton
+    <Button
         android:id="@+id/btn_text_input_dialog"
         style="@style/DialogTriggerButton"
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:text="@string/btn_text_input_dialog"
         app:backgroundTint="@color/darkDeepOrange" />
 
-    <android.support.v7.widget.AppCompatButton
+    <Button
         android:id="@+id/btn_single_choice_dialog"
         style="@style/DialogTriggerButton"
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         android:text="@string/btn_single_choice_dialog"
         app:backgroundTint="@color/darkGreen" />
 
-    <android.support.v7.widget.AppCompatButton
+    <Button
         android:id="@+id/btn_multi_choice_dialog"
         style="@style/DialogTriggerButton"
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         android:text="@string/btn_multi_choice_dialog"
         app:backgroundTint="@color/darkRed" />
 
-    <android.support.v7.widget.AppCompatButton
+    <Button
         android:id="@+id/btn_info_dialog"
         style="@style/DialogTriggerButton"
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
         android:text="@string/btn_info_dialog"
         app:backgroundTint="@color/darkBlueGrey" />
 
-    <android.support.v7.widget.AppCompatButton
+    <Button
         android:id="@+id/btn_progress_dialog"
         style="@style/DialogTriggerButton"
         android:layout_width="match_parent"

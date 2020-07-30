@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -28,8 +29,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
+                android:importantForAutofill="no"
                 android:textColor="?android:textColorSecondary"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
 
             <TextView
                 android:id="@+id/ld_error_message"
@@ -50,7 +54,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:orientation="horizontal">
 
 
@@ -60,7 +64,7 @@
             android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:text="@android:string/no"/>
 
         <TextView
@@ -68,7 +72,7 @@
             style="@style/DialogButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:text="@android:string/ok"/>
 
     </LinearLayout>

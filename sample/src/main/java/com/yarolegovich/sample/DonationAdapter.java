@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 /**
@@ -18,8 +20,9 @@ public class DonationAdapter extends ArrayAdapter<DonationOption> {
         super(context, 0, donationOptions);
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         ViewHolder vh;
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_donate_option, parent, false);
@@ -28,9 +31,10 @@ public class DonationAdapter extends ArrayAdapter<DonationOption> {
         } else vh = (ViewHolder) convertView.getTag();
 
         DonationOption option = getItem(position);
-
-        vh.description.setText(option.description);
-        vh.amount.setText(option.amount);
+        if (option != null) {
+            vh.description.setText(option.description);
+            vh.amount.setText(option.amount);
+        }
 
         return convertView;
     }

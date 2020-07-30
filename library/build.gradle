@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -14,16 +13,8 @@ android {
 }
 
 dependencies {
-    implementation "com.android.support:appcompat-v7:${rootProject.supportLibVersion}"
-}
-
-publish {
-    artifactId = 'lovely-dialog'
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    uploadName = rootProject.uploadName
-    publishVersion = rootProject.publishVersion
-    description = rootProject.description
-    licences = rootProject.licences
+    implementation deps.annotations
+    implementation deps.androidxCore
+    implementation deps.androidxCompat
 }
 

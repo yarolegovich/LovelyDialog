@@ -2,13 +2,14 @@ package com.yarolegovich.lovelydialog;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 
 /**
  * Created by yarolegovich on 16.04.2016.
