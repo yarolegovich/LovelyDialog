@@ -27,5 +27,5 @@ dependencies {
     implementation deps.androidxCore
     implementation deps.annotations
     implementation deps.androidxCompat
-    implementation project(':library')
+    implementation 'com.yarolegovich:lovely-dialog:1.1.1'
 }
