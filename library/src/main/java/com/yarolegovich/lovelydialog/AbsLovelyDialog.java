@@ -35,6 +35,9 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     private TextView titleView;
     private TextView messageView;
 
+    private int width = -1;
+    private int height = -1;
+
     public AbsLovelyDialog(Context context) {
         this(context, 0);
     }
@@ -188,7 +191,15 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
 
     public Dialog show() {
         dialog.show();
+        if (width != -1 && height != -1)
+            dialog.getWindow().setLayout(width,height);
         return dialog;
+    }
+
+    public T setDimensions(int width, int height){
+        this.width = width;
+        this.height = height;
+        return (T) this;
     }
 
     public Dialog create() {
