@@ -27,6 +27,7 @@
     <string name="you_ordered">You\'ve ordered:\n%s</string>
     <string name="confirm">Confirm</string>
     <string name="later">Later</string>
+    <string name="ok">OK</string>
     <string name="repo_waiting">GitHub repo is waiting for your star!</string>
     <string name="you_donated">"You donated: %s!"</string>
 </resources>
