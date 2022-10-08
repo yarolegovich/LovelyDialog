@@ -10,6 +10,7 @@
     tools:context="com.yarolegovich.sample.MainActivity">
 
 
+    
     <Button
         android:id="@+id/btn_standard_dialog"
         style="@style/DialogTriggerButton"

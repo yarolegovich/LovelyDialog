@@ -199,6 +199,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+
     private void showProgressDialog(Bundle savedInstanceState) {
         new LovelyProgressDialog(this)
                 .setIcon(R.drawable.ic_cast_connected_white_36dp)
