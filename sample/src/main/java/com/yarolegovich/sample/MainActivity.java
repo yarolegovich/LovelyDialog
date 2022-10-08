@@ -108,12 +108,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setInstanceStateHandler(ID_STANDARD_DIALOG, saveStateHandler)
                 .setSavedInstanceState(savedInstanceState)
                 .setMessage(R.string.rate_message)
-                .setPositiveButton(android.R.string.ok, LovelyDialogCompat.wrap(
+                .setPositiveButton(R.string.ok, LovelyDialogCompat.wrap(
                     (dialog, which) -> Toast.makeText(MainActivity.this,
                         R.string.repo_waiting,
                         Toast.LENGTH_SHORT)
                         .show()))
-                .setNeutralButton(R.string.later, null)
+                .setNeutralButton(R.string.later, LovelyDialogCompat.wrap(
+                        ((dialogInterface, i) -> Toast.makeText(MainActivity.this,"NO later accepted !Rate us now",Toast.LENGTH_SHORT).show())
+                ))
                 .setNegativeButton(android.R.string.no, null)
                 .show();
     }
@@ -142,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setIcon(R.drawable.ic_info_outline_white_36dp)
                 .setInstanceStateHandler(ID_INFO_DIALOG, saveStateHandler)
                 .setNotShowAgainOptionEnabled(0)
-                .setNotShowAgainOptionChecked(true)
+                .setNotShowAgainOptionChecked(false)
                 .setSavedInstanceState(savedInstanceState)
                 .setTitle(R.string.info_title)
                 .setMessage(R.string.info_message)

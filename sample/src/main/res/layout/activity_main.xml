@@ -6,12 +6,14 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@drawable/floor"
     tools:context="com.yarolegovich.sample.MainActivity">
+
 
     <Button
         android:id="@+id/btn_standard_dialog"
         style="@style/DialogTriggerButton"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_standard_dialog"
         app:backgroundTint="@color/indigo" />
@@ -19,7 +21,7 @@
     <Button
         android:id="@+id/btn_text_input_dialog"
         style="@style/DialogTriggerButton"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_text_input_dialog"
         app:backgroundTint="@color/darkDeepOrange" />
@@ -27,7 +29,7 @@
     <Button
         android:id="@+id/btn_single_choice_dialog"
         style="@style/DialogTriggerButton"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_single_choice_dialog"
         app:backgroundTint="@color/darkGreen" />
@@ -35,7 +37,7 @@
     <Button
         android:id="@+id/btn_multi_choice_dialog"
         style="@style/DialogTriggerButton"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_multi_choice_dialog"
         app:backgroundTint="@color/darkRed" />
@@ -43,7 +45,7 @@
     <Button
         android:id="@+id/btn_info_dialog"
         style="@style/DialogTriggerButton"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_info_dialog"
         app:backgroundTint="@color/darkBlueGrey" />
@@ -51,7 +53,7 @@
     <Button
         android:id="@+id/btn_progress_dialog"
         style="@style/DialogTriggerButton"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_progress_dialog"
         app:backgroundTint="@color/teal" />
