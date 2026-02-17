@@ -1,52 +1,50 @@
-apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
+    namespace 'com.yarolegovich.lovelydialog'
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        minSdk 14
+        targetSdk rootProject.ext.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    publishing {
+        singleVariant("release")
     }
 }
 
 dependencies {
-    implementation deps.annotations
-    implementation deps.androidxCore
-    implementation deps.androidxCompat
+    api rootProject.ext.deps.annotations
+    api rootProject.ext.deps.androidxCore
+    api rootProject.ext.deps.androidxCompat
 }
 
 afterEvaluate {
     publishing {
         publications {
-            LibRelease(MavenPublication) {
-                from components.release
-                artifactId 'lovely-dialog'
-                groupId upload.groupId
-                version upload.version
-            }
-        }
-    }
-
-    bintray {
-        user = upload.user
-        key = System.getenv('BINTRAY_KEY')
-        publications = ['LibRelease']
-        configurations = ['archives']
-        pkg {
-            name = upload.uploadName
-            repo = upload.repository
-            userOrg = upload.userOrg
-            licenses = upload.licences
-            publish = true
-            dryRun = false
-            version {
-                name = upload.version
-                desc = upload.description
+            release(MavenPublication) {
+                from components.findByName('release')
+                groupId = rootProject.ext.upload.groupId
+                artifactId = 'lovely-dialog'
+                version = rootProject.ext.upload.version
             }
         }
     }

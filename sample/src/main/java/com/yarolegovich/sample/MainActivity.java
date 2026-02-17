@@ -61,25 +61,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void showLovelyDialog(int dialogId, Bundle savedInstanceState) {
-        switch (dialogId) {
-            case ID_STANDARD_DIALOG:
-                showStandardDialog(savedInstanceState);
-                break;
-            case ID_SINGLE_CHOICE_DIALOG:
-                showSingleChoiceDialog(savedInstanceState);
-                break;
-            case ID_INFO_DIALOG:
-                showInfoDialog(savedInstanceState);
-                break;
-            case ID_MULTI_CHOICE_DIALOG:
-                showMultiChoiceDialog(savedInstanceState);
-                break;
-            case ID_TEXT_INPUT_DIALOG:
-                showTextInputDialog(savedInstanceState);
-                break;
-            case ID_PROGRESS_DIALOG:
-                showProgressDialog(savedInstanceState);
-                break;
+        if (dialogId == ID_STANDARD_DIALOG) {
+            showStandardDialog(savedInstanceState);
+        } else if (dialogId == ID_SINGLE_CHOICE_DIALOG) {
+            showSingleChoiceDialog(savedInstanceState);
+        } else if (dialogId == ID_INFO_DIALOG) {
+            showInfoDialog(savedInstanceState);
+        } else if (dialogId == ID_MULTI_CHOICE_DIALOG) {
+            showMultiChoiceDialog(savedInstanceState);
+        } else if (dialogId == ID_TEXT_INPUT_DIALOG) {
+            showTextInputDialog(savedInstanceState);
+        } else if (dialogId == ID_PROGRESS_DIALOG) {
+            showProgressDialog(savedInstanceState);
         }
     }
 
